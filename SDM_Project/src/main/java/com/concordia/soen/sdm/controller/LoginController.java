@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.concordia.soen.sdm.dao.ClerkLoginDAO;
+
 import com.concordia.soen.sdm.dao.UserLoginDAO;
 import com.concordia.soen.sdm.pojo.UserLogin;
 
