@@ -14,7 +14,11 @@
 	<h3>
 		<a href="<c:url value="/client/create"/>">Create new client</a>
 	</h3>
-	
+	<form:form action="${contextPath}/client/dashboard" method="post">
+		<input type="text" namplaceholder="Search.." name="searchId" size="30"
+			required="required">
+		<input type="submit" value="search" />
+	</form:form>
 
 	<table width="800" border="1">
 		<th>First Name</th>

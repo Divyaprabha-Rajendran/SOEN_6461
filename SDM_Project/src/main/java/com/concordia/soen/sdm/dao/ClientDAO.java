@@ -16,7 +16,7 @@ public class ClientDAO {
 	DataSource datasource;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	public Client getClientDetails(String clientId) {
+	public Client getClientDetails(String clientId) throws Exception {
 		System.out.println("DAO:Start");
 		String sql = "SELECT * FROM clientInformation  WHERE licenseNumber=?";
 		System.out.println("DAO:Stop");
