@@ -3,6 +3,7 @@ import java.util.*;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
-
+import com.concordia.soen.sdm.pojo.CatalogDetails;
 
 
 @Controller
@@ -21,27 +22,45 @@ public class CatalogController {
 	@Autowired
 	CatalogDAO CatalogDAO;
 	
-	@RequestMapping(value ="/system/catalog", method = RequestMethod.GET)
-	public ModelAndView login(HttpServletRequest request,
+	@Autowired
+	CatalogDAO catalogDao;
+	
+	@Autowired
+	HttpSession httpSession;
+	
+	@RequestMapping(value="/catalog")
+	public ModelAndView catalog(HttpServletRequest request,
 			   HttpServletResponse response) {
+		List<CatalogDetails> cl=catalogDao.all();
 		
-		System.out.println("LoginController:Start");
-		String userName=request.getParameter("username");  
-	      String password=request.getParameter("password");
-	      System.out.println("control:Start");
-	      
-	      List<CatalogDetails> cl=CatalogDAO.all();
-	      for(CatalogDetails c:cl) {
-	      System.out.println(c.getvehicleid()+c.getcolor()+c.getlicenseplate()+" "+c.getcost()+" "+c.getavailability()+c.getmake()+c.getmodel()+c.getyear()+c.gettype());}
-	      ModelAndView mv=new ModelAndView();
-	      mv.setViewName("Catalog");
-	      mv.addObject("message",cl);
-	      String msg;
-	      msg = "Welcome" +userName + ".";
-	     
-	      
-	      System.out.println("LoginController:Stop");
-	      return mv;
+		httpSession.setAttribute("filterData", cl);
+		ModelAndView view = new ModelAndView("Catalog");
+		view.addObject("message",cl);
+		System.out.print(cl);
+		return view;
+	}
+	@RequestMapping(value = "/catalog/viewDetail")
+	public ModelAndView viewDetail(HttpServletRequest request) {
+		System.out.println(request.getParameterMap());
+		System.out.println(request.getParameter("idparam"));
+		int idParam = Integer.parseInt(request.getParameter("idparam"));
+		System.out.println(idParam);
 
-}
+		List<CatalogDetails> filterData = (List<CatalogDetails>) httpSession.getAttribute("filterData");
+		
+		int index = 0;
+		int nextId = 0;
+		CatalogDetails transaction = null;
+		for(int i = 0; i < filterData.size(); i++) {
+			if(filterData.get(i).getVehicleId() == idParam) {
+				transaction = filterData.get(i);
+				nextId = filterData.get((i+1) % filterData.size()).getVehicleId();
+				break;
+			}
+		}
+		ModelAndView view = new ModelAndView("ViewVehicleDetails");
+		view.addObject("transaction", transaction);
+		view.addObject("nextId", nextId);
+		return view;
+	}
 	}

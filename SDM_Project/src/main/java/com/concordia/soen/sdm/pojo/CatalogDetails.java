@@ -1,5 +1,5 @@
 package com.concordia.soen.sdm.pojo;
-import java.util.List;
+
 public class CatalogDetails {
 	private int  vehicleId;	
 	private String  type;
@@ -8,71 +8,62 @@ public class CatalogDetails {
 	private int  year;
 	private String  color;
 	private String  licensePlate;
-	private int  availability;
-	private int cost;
-	public void setvehicleid(int vehicleId) {
-		
-		this.vehicleId=vehicleId;
-	}
-	public int  getvehicleid() {
+	private String  availability;
+	
+	public int getVehicleId() {
 		return vehicleId;
 	}
-	public void settype(String type) {
-		// TODO Auto-generated method stub
-		this.type=type;
+	public void setVehicleId(int vehicleId) {
+		this.vehicleId = vehicleId;
 	}
-	public String gettype() {
+	public String getType() {
 		return type;
 	}
-	public void setmake(int make) {
-		// TODO Auto-generated method stub
-		this.make=make;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public int getmake() {
+	public int getMake() {
 		return make;
 	}
-	
-	public void setyear(int year) {
-		// TODO Auto-generated method stub
-		this.year=year;
+	public void setMake(int make) {
+		this.make = make;
 	}
-	public int getyear() {
-		return year;
-	}
-	public void setmodel(int model) {
-		// TODO Auto-generated method stub
-		this.model=model;
-	}
-	public int getmodel() {
+	public int getModel() {
 		return model;
 	}
-	public void setcolor(String color) {
-		// TODO Auto-generated method stub
-		this.color=color;
+	public void setModel(int model) {
+		this.model = model;
 	}
-	public String getcolor() {
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public String getColor() {
 		return color;
 	}
-	public void setlicenseplate(String licensePlate) {
-		// TODO Auto-generated method stub
-		this.licensePlate=licensePlate;
+	public void setColor(String color) {
+		this.color = color;
 	}
-	public String getlicenseplate() {
+	public String getLicensePlate() {
 		return licensePlate;
 	}
-	public void setavailability(int availability) {
-		// TODO Auto-generated method stub
-		this.availability=availability;
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
-	public int getavailability() {
+	public String getAvailability() {
 		return availability;
 	}
-	public void setcost(int cost) {
-		// TODO Auto-generated method stub
-		this.cost=cost;
+	public void setAvailability(String availability) {
+		this.availability = availability;
 	}
-	public int getcost() {
+	public int getCost() {
 		return cost;
 	}
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+	private int cost;
 
 }
