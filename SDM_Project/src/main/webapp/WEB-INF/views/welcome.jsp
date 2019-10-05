@@ -11,5 +11,5 @@
     
     <h3><a href="<c:url value="/client/dashboard"/>">Client Management System</a></h3>
       </body>
-  
+      <a href="${contextpath }/root/">Logout</a>
 </html>
