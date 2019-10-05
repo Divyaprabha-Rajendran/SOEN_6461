@@ -48,7 +48,7 @@
 			</tr>
 		</table>
 		<a href="${contextPath}/root/client/dashboard">Back</a>
-		<a href="#">Delete</a> 
+		<a href="${contextPath}/root/client/deleteClient?licenseNumber=${client.licenseNumber}">Delete</a> 
 		<input type="submit" value="Update Record">
 	</form>
 </body>

@@ -1,3 +1,4 @@
+
 package com.concordia.soen.sdm.controller;
 
 import java.text.SimpleDateFormat;
@@ -174,5 +175,25 @@ public class ClientManagementController {
 	 * ModelAndView mv=new ModelAndView(); mv.setViewName("clientDetailsEdit");
 	 * mv.addObject("client", client); return mv; }
 	 */
+	
+	@RequestMapping(value="/deleteClient")
+	public ModelAndView deleteClient(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView();
+		String licenseNumber = request.getParameter("licenseNumber");
+		System.out.println("came"+licenseNumber);
+		String message = "";
+		if(licenseNumber != null) {
+			try {
+				clientDAO.deleteClient(licenseNumber);
+				view.setViewName("redirect:/client/dashboard");
+			}catch (Exception e) {
+				message = "Problem while deleting. Please try again";
+				view.setViewName("view_client_detail");
+				view.addObject("message", message);
+				e.printStackTrace();
+			}
+		}
+		return view;
+	}
 
 }

@@ -51,9 +51,8 @@ public class ClientDAO {
 		jdbcTemplate.execute(updateQuery);
 	}
 
-	public void deleteClient(String licenseNumber) {
+	public void deleteClient(String licenseNumber) throws Exception{
 		String sql = "DELETE FROM VehicleRentingSystem.clientInformation  WHERE licenseNumber=?";
-		System.out.println("DAO:Stop");
 		jdbcTemplate.update(sql, new Object[]{licenseNumber});
 	}
 }
