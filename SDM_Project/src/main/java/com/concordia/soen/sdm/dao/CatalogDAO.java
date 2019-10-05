@@ -24,5 +24,13 @@ public class CatalogDAO {
 				BeanPropertyRowMapper.newInstance(CatalogDetails.class));
 	}
 	
-	
+	public CatalogDetails getVehicleDetails(String licensePlate) {
+		String sql = "SELECT * FROM VehicleDetails  WHERE licensePlate=?";
+		return jdbcTemplate.queryForObject(sql, new Object[]{licensePlate},
+				BeanPropertyRowMapper.newInstance(CatalogDetails.class));
+	}
+
+	public void updateAvailability(String availability, String licenseNumber) {
+		jdbcTemplate.execute("UPDATE VehicleDetails SET availability='"+availability+"' where licensePlate='"+licenseNumber+"'");
+	}
 }
