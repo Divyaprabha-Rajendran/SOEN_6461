@@ -30,6 +30,6 @@
 
 	</form></br>
 
-<p> Please find the username and password in readme file in git or in google docs. </p>
+<p> Please find the username and password in readme file in git. </p>
 </body>
 </html>
