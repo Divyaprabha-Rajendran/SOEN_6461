@@ -11,6 +11,7 @@
     
     <h3><a href="<c:url value="/client/dashboard"/>">Client Management System</a></h3>
     <h3><a href="<c:url value="/system/catalog?from=reserve"/>">Reserve/Rental </a></h3>
+    <h3><a href="<c:url value="/cancelReturn/transactionSearch"/>">Cancel/Return</a></h3>
       </body>
       <a href="${contextpath }/root/">Logout</a>
 </html>
