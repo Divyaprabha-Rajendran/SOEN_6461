@@ -9,8 +9,13 @@
 </head>
 <body>
 	<form action="${contextPath}/system/catalog" method="post">
-		
-		
+		<c:forEach var="type" items="${types}">
+			<input type="checkbox" name="${type}" value="${type }">${type }</br>
+		</c:forEach>
+		<select name="sort">
+			<option value="year">Sort By year</option>
+			<option value="type">Sort By Vehicle</option>
+		</select> <input type="submit" , value="Filter">
 	</form>
 	<table border="1">
 		<th>serialno</th>
