@@ -28,7 +28,9 @@
 		<th>License Plate</th>
 		<th>availability</th>
 		<th>cost</th>
-		
+		<c:if test="${from =='reserve'}">
+			<th>Options</th>
+		</c:if>
 		<c:forEach var="cl" items="${message}" varStatus="status">
 			<tr>
 				<td>${status.index + 1}</td>
@@ -43,7 +45,14 @@
 				<td>${cl.licensePlate}</td>
 				<td>${cl.availability}</td>
 				<td>${cl.cost}</td>
-			
+			<c:if test="${(from =='reserve' && cl.availability=='YES')}">
+					<td><a
+						href="${contextPath }/reservation/reserve?licensePlate=${cl.licensePlate}">Reserve/Rent</a>
+					</td>
+				</c:if>
+				<c:if test="${cl.availability=='NO' && from=='reserve'}">
+					<td>NA</td>
+				</c:if>
 
 			</tr>
 		</c:forEach>
