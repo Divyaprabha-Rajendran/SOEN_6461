@@ -1,3 +1,9 @@
+/** 
+ * CatalogController has two methods
+ * @method1: "catalog" method helps to set the attributes and get messages on the screen
+ * @method2: "viewDetails" method is used to save the transaction on page and move to next step
+ * @return: returns the view
+ */
 package com.concordia.soen.sdm.controller;
 
 import java.util.List;
