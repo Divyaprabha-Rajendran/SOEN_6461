@@ -21,6 +21,10 @@ import com.concordia.soen.sdm.pojo.Client;
 @Controller
 @RequestMapping("/client/*")
 
+/**
+ * 
+ * Class ClientManagementController for making management on the client records. 
+ */
 public class ClientManagementController {
 
 	@Autowired
@@ -30,6 +34,12 @@ public class ClientManagementController {
 	private HttpSession httpSession;
 
 	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
+	/**
+	 * method dashboard to display the dashboard of a client
+	 * @param request  HttpServletRequest
+	 * @param response  HttpServletResponse
+	 * @return ModelAndView
+	 */
 	public ModelAndView dashboard(HttpServletRequest request, HttpServletResponse response) {
 		String clientId = request.getParameter("searchId");
 		System.out.println(clientId);
@@ -61,6 +71,12 @@ public class ClientManagementController {
 	}
 
 	@RequestMapping(value = "/client/create")
+	/**
+	 * method create to create a new client
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 * @return ModelAndView
+	 */
 	public ModelAndView create(HttpServletRequest request, HttpServletResponse response) {
 		String message = "";
 		Client client = new Client();
@@ -91,6 +107,11 @@ public class ClientManagementController {
 	}
 
 	@RequestMapping(value = "/client/viewDetails", method = { RequestMethod.GET, RequestMethod.POST })
+	/**
+	 * method viewDetails to view client details
+	 * @param request HttpServletRequest
+	 * @return ModelAndView
+	 */
 	public ModelAndView viewDetails(HttpServletRequest request) {
 		String licenseNumber = request.getParameter("licenseNumber");
 		Client client = new Client();
@@ -177,6 +198,11 @@ public class ClientManagementController {
 	 */
 	
 	@RequestMapping(value="/deleteClient")
+	/**
+	 * method deleteClient to delete a client
+	 * @param request HttpServletRequest
+	 * @return ModelAndView
+	 */
 	public ModelAndView deleteClient(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		String licenseNumber = request.getParameter("licenseNumber");
