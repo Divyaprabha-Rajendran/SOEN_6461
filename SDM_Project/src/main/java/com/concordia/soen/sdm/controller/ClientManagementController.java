@@ -199,6 +199,7 @@ public class ClientManagementController {
 	
 	@RequestMapping(value="/deleteClient")
 	/**
+	 * 
 	 * method deleteClient to delete a client
 	 * @param request HttpServletRequest
 	 * @return ModelAndView
