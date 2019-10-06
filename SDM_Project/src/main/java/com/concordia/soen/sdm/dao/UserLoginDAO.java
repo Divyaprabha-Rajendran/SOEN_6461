@@ -26,7 +26,7 @@ public class UserLoginDAO{
 	  /**
 	   * this method userLogin takes username and password as arguments and thnen starts the user page 
 	   * @param userName is of type string 
-	   * @param password is of type strikng 
+	   * @param password is of type string
 	   * @return
 	   */
 	public UserLogin userLogin(String userName, String password) {
