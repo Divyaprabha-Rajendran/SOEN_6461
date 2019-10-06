@@ -11,6 +11,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.concordia.soen.sdm.pojo.UserLogin;
 
+
+/** this class USERLOGINDAO is for the login of the user 
+ * 
+ */
 public class UserLoginDAO{
 
 
@@ -18,6 +22,13 @@ public class UserLoginDAO{
 	  DataSource datasource;
 	  @Autowired
 	  JdbcTemplate jdbcTemplate;
+	  
+	  /**
+	   * this method userLogin takes username and password as arguments and thnen starts the user page 
+	   * @param userName is of type string 
+	   * @param password is of type strikng 
+	   * @return
+	   */
 	public UserLogin userLogin(String userName, String password) {
 		System.out.println("DAO:Start");
 		  String sql = "SELECT * FROM Users  WHERE userName=? and Password=? ";
