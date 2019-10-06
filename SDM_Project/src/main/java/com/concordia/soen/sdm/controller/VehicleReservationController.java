@@ -21,6 +21,11 @@ import com.concordia.soen.sdm.pojo.CatalogDetails;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
 
+/**
+ * @author Divyaprabha Rajendran
+ * Controller for making reservation or rental.
+ *
+ */
 @Controller
 @RequestMapping("/reservation/*")
 public class VehicleReservationController {
@@ -33,6 +38,13 @@ public class VehicleReservationController {
 	
 	@Autowired
 	TransactionDAO transactionDao;
+	
+	/**
+	 * Method to process the reservation or rental request
+	 * @param HTTPRequest containing the license plate  and license number  
+	 * @return  vehicle_reservation view to show the reservation details.
+	 * @throws Exception To handle all exceptions.
+	 */
 
 	@RequestMapping(value="/reserve")
 	public ModelAndView reserve(HttpServletRequest request) throws Exception {
@@ -68,6 +80,11 @@ public class VehicleReservationController {
 		return view;
 	}
 
+	/**
+	 * Method to find reservation or rent
+	 * @param startDate To evaluate the status  
+	 * @return  status can be rental/reservation
+	 */
 	private String findStatus(String startDate) throws ParseException {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
