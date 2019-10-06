@@ -32,6 +32,12 @@ public class CatalogController {
 	@Autowired
 	HttpSession httpSession;
 	
+	/**
+	 * This method takes request and response as parameters and perform certain operations and adds object and returns the view
+	 * @param request is of type HTTPServletRequest 
+	 * @param response is of type HTTPServletResponse 
+	 * @return view is returned which is of type ModelandView
+	 */
 	@RequestMapping(value="/catalog")
 	public ModelAndView catalog(HttpServletRequest request,
 			   HttpServletResponse response) {
@@ -66,7 +72,11 @@ public class CatalogController {
 			return filterData.stream().sorted((a,b) -> a.getType().compareTo(b.getType())).collect(Collectors.toList());
 		}
 	}
-	
+	/**
+	 * viewDetails takes request as parameter and it  is written to view the vehicle type details and return the vehicle data to the user 
+	 * @param request this is the request of type HttpServletRequest and is send as an argument to the servlet service method
+	 * @return view is returned containing the vehicle type details of type MoedlandView
+	 */
 	@RequestMapping(value = "/catalog/viewDetail")
 	public ModelAndView viewDetail(HttpServletRequest request) {
 		System.out.println(request.getParameterMap());
