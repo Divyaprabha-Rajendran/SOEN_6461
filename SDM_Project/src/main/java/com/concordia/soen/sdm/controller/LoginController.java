@@ -24,7 +24,7 @@ public class LoginController {
 	/**
 	 * This method is for the clerk login. The clerk gets logged in by entering username and password 
 	 * @param request
-	 * @param response
+	 * @param response of type httpservlet response
 	 * @return
 	 */
 	@RequestMapping(value ="/clerk/login", method = {RequestMethod.POST, RequestMethod.GET})
