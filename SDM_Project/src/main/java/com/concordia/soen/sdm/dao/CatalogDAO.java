@@ -39,7 +39,7 @@ public class CatalogDAO {
 	}
 /**
  * UpdateAvailability method  takes availability and license number as the arguments and set the availability to a particular license number
- * @param availability is of string type	
+ * @param availability is of type string
  * @param licenseNumber is of type string 
  */
 	public void updateAvailability(String availability, String licenseNumber) {
