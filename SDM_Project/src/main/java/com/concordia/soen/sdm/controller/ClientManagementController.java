@@ -32,7 +32,7 @@ public class ClientManagementController {
 	 * THis method dashboard takes request and response as arguments. This is for viewing the client details 
 	 * @param request is of type HttpServeltRequest and functions like basic doget  inbuilt method 
 	 * @param response is of type httpserveltResponse and functions like basic dopost 
-	 * @return view of the clientdetails 
+	 * @return view of the client details 
 	 */
 
 	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
