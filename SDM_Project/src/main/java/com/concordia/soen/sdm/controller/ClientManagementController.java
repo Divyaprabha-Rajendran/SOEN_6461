@@ -18,13 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.pojo.Client;
 
+/**
+ * @author Harish Jayasankar
+ * Controller for Client management system.
+ *
+ */
 @Controller
 @RequestMapping("/client/*")
 
-/**
- * 
- * Class ClientManagementController for making management on the client records. 
- */
 public class ClientManagementController {
 
 	@Autowired
@@ -33,13 +34,12 @@ public class ClientManagementController {
 	@Autowired
 	private HttpSession httpSession;
 
-	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
 	/**
-	 * method dashboard to display the dashboard of a client
-	 * @param request  HttpServletRequest
-	 * @param response  HttpServletResponse
-	 * @return ModelAndView
+	 * Method to search and view all client
+	 * @param HTTPRequest containing search Id  
+	 * @return  client details will be passed to jsp.
 	 */
+	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView dashboard(HttpServletRequest request, HttpServletResponse response) {
 		String clientId = request.getParameter("searchId");
 		System.out.println(clientId);
@@ -70,19 +70,18 @@ public class ClientManagementController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/client/create")
 	/**
-	 * method create to create a new client
-	 * @param request HttpServletRequest
-	 * @param response HttpServletResponse
-	 * @return ModelAndView
+	 * Method to create new client
+	 * @param HTTPRequest containing firstname,lastname,licensenumber,expiry date,phonenumber 
+	 * @return  success message will be displayed.
 	 */
+	@RequestMapping(value = "/client/create")
 	public ModelAndView create(HttpServletRequest request, HttpServletResponse response) {
 		String message = "";
 		Client client = new Client();
 		if (!request.getParameterMap().isEmpty()) {
 			try {
-				System.out.println(request.getParameterMap());
+				
 				client.setFirstName(request.getParameter("firstName"));
 				client.setLastName(request.getParameter("lastName"));
 				client.setLicenseNumber(request.getParameter("licenseNumber"));
@@ -106,12 +105,13 @@ public class ClientManagementController {
 		return view;
 	}
 
-	@RequestMapping(value = "/client/viewDetails", method = { RequestMethod.GET, RequestMethod.POST })
+	
 	/**
-	 * method viewDetails to view client details
-	 * @param request HttpServletRequest
-	 * @return ModelAndView
+	 * Method to view and update client details
+	 * @param HTTPRequest containing firstname,lastname,licensenumber,expiry date,phonenumber 
+	 * @return  success message will be displayed.
 	 */
+	@RequestMapping(value = "/client/viewDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView viewDetails(HttpServletRequest request) {
 		String licenseNumber = request.getParameter("licenseNumber");
 		Client client = new Client();
@@ -197,13 +197,13 @@ public class ClientManagementController {
 	 * mv.addObject("client", client); return mv; }
 	 */
 	
-	@RequestMapping(value="/deleteClient")
 	/**
 	 * 
 	 * method deleteClient to delete a client
 	 * @param request HttpServletRequest
 	 * @return ModelAndView
 	 */
+	@RequestMapping(value="/deleteClient")
 	public ModelAndView deleteClient(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		String licenseNumber = request.getParameter("licenseNumber");
