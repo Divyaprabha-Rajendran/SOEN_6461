@@ -1,4 +1,3 @@
-
 package com.concordia.soen.sdm.controller;
 
 import java.text.SimpleDateFormat;
@@ -18,11 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.pojo.Client;
 
-/**
- * @author Harish Jayasankar
- * Controller for Client management system.
- *
- */
 @Controller
 @RequestMapping("/client/*")
 
@@ -33,12 +27,14 @@ public class ClientManagementController {
 
 	@Autowired
 	private HttpSession httpSession;
-
+	
 	/**
-	 * Method to search and view all client
-	 * @param HTTPRequest containing search Id  
-	 * @return  client details will be passed to jsp.
+	 * THis method dashboard takes request and response as arguments. This is for viewing the client details 
+	 * @param request is of type HttpServeltRequest and functions like basic doget  inbuilt method 
+	 * @param response is of type httpserveltResponse and functions like basic dopost 
+	 * @return view of the clientdetails 
 	 */
+
 	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView dashboard(HttpServletRequest request, HttpServletResponse response) {
 		String clientId = request.getParameter("searchId");
@@ -71,9 +67,8 @@ public class ClientManagementController {
 	}
 
 	/**
-	 * Method to create new client
-	 * @param HTTPRequest containing firstname,lastname,licensenumber,expiry date,phonenumber 
-	 * @return  success message will be displayed.
+	 *This method is to create the client with all the required details such as firstname, lastname and licensence number and such fields 
+	 * 
 	 */
 	@RequestMapping(value = "/client/create")
 	public ModelAndView create(HttpServletRequest request, HttpServletResponse response) {
@@ -81,7 +76,7 @@ public class ClientManagementController {
 		Client client = new Client();
 		if (!request.getParameterMap().isEmpty()) {
 			try {
-				
+				System.out.println(request.getParameterMap());
 				client.setFirstName(request.getParameter("firstName"));
 				client.setLastName(request.getParameter("lastName"));
 				client.setLicenseNumber(request.getParameter("licenseNumber"));
@@ -105,12 +100,11 @@ public class ClientManagementController {
 		return view;
 	}
 
-	
-	/**
-	 * Method to view and update client details
-	 * @param HTTPRequest containing firstname,lastname,licensenumber,expiry date,phonenumber 
-	 * @return  success message will be displayed.
-	 */
+ /**
+  * this method is to view all the client details 
+  * @param request this takes the request from and in response to that it views the client details 
+  * @return
+  */
 	@RequestMapping(value = "/client/viewDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView viewDetails(HttpServletRequest request) {
 		String licenseNumber = request.getParameter("licenseNumber");
@@ -198,10 +192,10 @@ public class ClientManagementController {
 	 */
 	
 	/**
-	 * 
-	 * method deleteClient to delete a client
-	 * @param request HttpServletRequest
-	 * @return ModelAndView
+	 * This method deleteClient is to delete the client information and it deletes by taking license number as an argument because it is unique
+	 *
+	 * @param request is of type httpservletrequest 
+	 * @return view after deleting the client details 
 	 */
 	@RequestMapping(value="/deleteClient")
 	public ModelAndView deleteClient(HttpServletRequest request) {
@@ -224,3 +218,4 @@ public class ClientManagementController {
 	}
 
 }
+
