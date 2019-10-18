@@ -9,7 +9,8 @@ Team members for the project are
 5. Mahy Salama - 40074737 - mahyhanysalama@gmail.com
 6. Swetha Chenna - 40092019 - swethachenna2018@gmail.com
 
-Team Leader:Divyaprabha Rajendran
+Team Leader for iteration 2 : Divyaprabha Rajendran
+Team Leader for iteration 3 : Swetha Chenna
 
 Technologies decided to leverage:
 Database - MySql
