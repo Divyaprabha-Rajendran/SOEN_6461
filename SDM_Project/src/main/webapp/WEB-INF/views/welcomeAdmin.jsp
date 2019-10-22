@@ -16,7 +16,7 @@
 
     <h2>${message}</h2>
 
-    <h3><a href="<c:url value="/system/catalog"/>">View Catalog</a></h3>
+    <h3><a href="<c:url value="/admin/catalog"/>">View Catalog</a></h3>
 
     <h3><a href="<c:url value="/client/dashboard"/>">Vehicle Management System</a></h3>
 
