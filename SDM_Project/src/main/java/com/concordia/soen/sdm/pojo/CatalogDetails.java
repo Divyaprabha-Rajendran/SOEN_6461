@@ -9,6 +9,7 @@ public class CatalogDetails {
 	private String  color;
 	private String  licensePlate;
 	private String  availability;
+	private int cost;
 	
 	public int getVehicleId() {
 		return vehicleId;
@@ -64,6 +65,6 @@ public class CatalogDetails {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	private int cost;
+	
 
 }

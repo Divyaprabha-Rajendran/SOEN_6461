@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.concordia.soen.sdm.pojo.CancelReturn;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
+import com.concordia.soen.sdm.pojo.Client;
 
 
 public class CatalogDAO {
@@ -47,13 +48,30 @@ public class CatalogDAO {
 	}
 	
 	/**
-	 * getRentedVehicles returns all the vehiclkes that are rented 
-	 * @return
+	 * getRentedVehicles returns all the vehicles that are rented 
+	 * @return list of transactions
 	 */
 	public List<CancelReturn> getRentedVehicles() {
 		String sql = "select v.type, v.licensePlate, v.availability,x.cost,x.licenseNumber, x.startdate, x.duedate from\r\n" + 
 				"(select DISTINCT(a.licensePlate), max(a.startdate) as startdate,a.licenseNumber, b.cost, a.duedate from rentedVehiclesRecord a right join rentedVehiclesRecord b on a.licensePlate = b.licensePlate and a.startdate=b.startdate group by a.licensePlate)\r\n" + 
 				" x left join VehicleDetails v on x.licensePlate= v.licensePlate where v.availability='NO'";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(CancelReturn.class));
+	}
+	
+	/**
+	 *  Method to insert new vehicle record into VehicleDetails table
+	 *  @param CatalogDetails New vehicle details forwarded from the vehicle record controller.
+	 */
+	public void insertVehicleDetails(CatalogDetails newVehicle) throws Exception{
+		String insertQuery = "INSERT INTO VehicleRentingSystem.VehicleDetails(type,make,model,year,color,licensePlate,availability,cost) VALUES ('"
+				+ newVehicle.getType()+"','"
+				+ newVehicle.getMake()+"','"
+				+newVehicle.getModel()+"','"
+				+newVehicle.getYear()+"','"
+				+newVehicle.getColor()+"','"
+				+newVehicle.getLicensePlate()+"','"
+				+newVehicle.getAvailability()+"','"
+				+ newVehicle.getCost()+"')";
+		jdbcTemplate.execute(insertQuery);			
 	}
 }

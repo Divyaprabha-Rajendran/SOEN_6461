@@ -20,7 +20,7 @@
 
     <h3><a href="<c:url value="#"/>">Vehicle Transaction History</a></h3>
 
-    <h3><a href="<c:url value="#"/>">Vehicle Record Management </a></h3>
+    <h3><a href="<c:url value="/vehicle/dashboard"/>">Vehicle Record Management </a></h3>
 
     </body>
 
