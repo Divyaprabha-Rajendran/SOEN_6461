@@ -7,7 +7,7 @@
     <bean id="catalogDao" class="com.concordia.soen.sdm.dao.CatalogDAO" />
     <bean id="clientDao" class="com.concordia.soen.sdm.dao.ClientDAO" />
     <bean id="transactionDao" class="com.concordia.soen.sdm.dao.TransactionDAO" />
-    
+    <bean id="transactionAvailabilityCheck" class="com.concordia.soen.sdm.service.TransactionAvailabilityCheckService" />
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>

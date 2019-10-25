@@ -1,5 +1,6 @@
 package com.concordia.soen.sdm.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -88,4 +89,41 @@ public class TransactionDAO {
 		String sql = "SELECT * FROM rentedVehiclesRecord where licensePlate='"+numberPlate+"';";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
+	
+	public List<Transaction> getUserTransactions(String licenseNumber) {
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licenseNumber=?";
+		return jdbcTemplate.query(sql, new Object[]{licenseNumber},
+                BeanPropertyRowMapper.newInstance(Transaction.class));
+		
+	}
+	
+	/*
+	 * public List<Transaction> getVehicleDateTransactions(String licensePlate, Date
+	 * dateStr) { String sql =
+	 * "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licensePlate=? and "
+	 * ; return jdbcTemplate.query(sql, new Object[]{licenseNumber},
+	 * BeanPropertyRowMapper.newInstance(Transaction.class));
+	 * 
+	 * }
+	 */
+
+	public List<Transaction> getVehicleTransactions(String searchData) {
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licensePlate=?";
+		return jdbcTemplate.query(sql, new Object[]{searchData},
+                BeanPropertyRowMapper.newInstance(Transaction.class));
+	}
+
+	public List<Transaction> getdueDateTransactions(Date dueDate) {
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE duedate=?";
+		return jdbcTemplate.query(sql, new Object[]{dueDate},
+                BeanPropertyRowMapper.newInstance(Transaction.class));
+	}
+
+	public List<Transaction> getrentedVehicleTransactions(String status) {
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE status=?";
+		return jdbcTemplate.query(sql, new Object[]{status},
+                BeanPropertyRowMapper.newInstance(Transaction.class));
+	}
+	
+	
 }
