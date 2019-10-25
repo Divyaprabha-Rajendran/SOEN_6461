@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@	page import="java.util.*, java.text.*"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
 					Date date = new Date();
 					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				%>
-				<td><input type="date" name="expDate" required="required" value=${client.licenseExpiryDate }
+				<td><input type="date" id="expDate" name="expDate" required="required" value=${client.licenseExpiryDate }
 					min="<%format.format(date); %>"></td>
 			</tr>
 			<tr>
@@ -51,5 +52,11 @@
 		<a href="${contextPath}/root/client/deleteClient?licenseNumber=${client.licenseNumber}">Delete</a> 
 		<input type="submit" value="Update Record">
 	</form>
+	<script type="text/javascript">
+	var date = new Date();
+	var d = (1900 + date.getYear()) + "-" + (1 + date.getMonth()) + "-"
+			+ (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
+	document.getElementById('expDate').setAttribute('min', d);
+	</script>
 </body>
 </html>
