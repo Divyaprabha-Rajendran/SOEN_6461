@@ -74,6 +74,10 @@ public class LoginController {
 		}
 		return mv;
 	}
+	@RequestMapping(value ="/clerk/logout", method = {RequestMethod.POST, RequestMethod.GET})
+	  public String logout(HttpSession session) {
+        httpSession.invalidate();
+        return "redirect:/";
+      }
+	}
 
-
-}

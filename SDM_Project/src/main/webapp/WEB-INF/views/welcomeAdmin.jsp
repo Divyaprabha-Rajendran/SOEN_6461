@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@	page import="java.util.*, java.text.*"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-    pageEncoding="ISO-8859-1"%>
-
-    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 
@@ -24,7 +26,7 @@
 
     </body>
 
-      <a href="${contextpath }/root/">Logout</a>
+      <a href="${contextpath}/root/clerk/logout">Logout</a>
 
 </html>
 

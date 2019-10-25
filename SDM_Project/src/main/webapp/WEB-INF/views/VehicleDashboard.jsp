@@ -18,7 +18,7 @@
 
     </body>
 
-      <a href="${contextpath }/root/">Logout</a>
+     <a href="${contextpath}/root/clerk/logout">Logout</a>
 
 </html>
 
