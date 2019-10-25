@@ -11,8 +11,8 @@ import java.util.Date;
 public class Transaction {
 
 	private int reservationId;
-	private Date startdate;
-	private Date duedate;
+	private String startdate;
+	private String duedate;
 	private String licenseNumber;
 	private String licensePlate;
 	private String status;
@@ -37,29 +37,29 @@ public class Transaction {
 	 * getter for startdate
 	 * @return startdate
 	 */
-	public Date getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
 	/**
 	 * setter for startdate
-	 * @param startdate
+	 * @param dateTime
 	 */
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+	public void setStartdate(String dateTime) {
+		this.startdate = dateTime;
 	}
 	/**
 	 * getter for duedate
 	 * @return duedate
 	 */
-	public Date getDuedate() {
+	public String getDuedate() {
 		return duedate;
 	}
 	/**
 	 * setter for duedate
-	 * @param duedate
+	 * @param dateTime
 	 */
-	public void setDuedate(Date duedate) {
-		this.duedate = duedate;
+	public void setDuedate(String dateTime) {
+		this.duedate = dateTime;
 	}
 	/**
 	 * getter for licenseNumber

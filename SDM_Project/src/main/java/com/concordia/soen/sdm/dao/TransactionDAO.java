@@ -84,4 +84,8 @@ public class TransactionDAO {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
+	public List<Transaction> getVehicleRentRecords(String numberPlate) {
+		String sql = "SELECT * FROM rentedVehiclesRecord where licensePlate='"+numberPlate+"';";
+		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
+	}
 }

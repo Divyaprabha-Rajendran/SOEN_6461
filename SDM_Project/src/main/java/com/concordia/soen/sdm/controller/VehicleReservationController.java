@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
@@ -51,15 +53,19 @@ public class VehicleReservationController {
 		ModelAndView view = new ModelAndView("vehicle_reservation");
 
 		if(request.getParameter("startDate") != null) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+			SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // your template here
 			
 			Transaction transaction = new Transaction();
 			transaction.setLicensePlate(request.getParameter("licensePlate"));
 			transaction.setLicenseNumber(request.getParameter("licenseNumber"));
 			String date = request.getParameter("endDate");
-			transaction.setDuedate(new java.sql.Date(formatter.parse(date).getTime()));
+			date = date.replace("T", " ");
+			String dateTime = formater.format(formater.parse(date));
+			transaction.setDuedate(dateTime);
 			date = request.getParameter("startDate");
-			transaction.setStartdate(new java.sql.Date(formatter.parse(date).getTime()));
+			date = date.replace("T", " ");
+			dateTime = formater.format(formater.parse(date));
+			transaction.setStartdate(dateTime);
 			transaction.setStatus(findStatus(date));
 			transaction.setCost(Integer.parseInt(request.getParameter("cost")));
 			catalogDao.updateAvailability("NO", request.getParameter("licensePlate"));
@@ -79,6 +85,34 @@ public class VehicleReservationController {
 		}
 		return view;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/checkVehicleAvailability", method= {RequestMethod.POST, RequestMethod.GET})
+	public String checkVehicleAvailability(HttpServletRequest request) throws ParseException {
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		String numberPlate = request.getParameter("numberPlate");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date sDate = format.parse(startDate);
+		Date eDate = format.parse(endDate);
+		List<Transaction> records = transactionDao.getVehicleRentRecords(numberPlate);
+		for(int i = 0; i < records.size(); i++) {
+			Transaction data = records.get(i);
+			Date dbStartDate = format.parse(data.getStartdate());
+			Date dbEndDate = format.parse(data.getDuedate());
+			System.out.println(data.getStartdate()+" "+sDate+" "+endDate);
+			if(dbStartDate.compareTo(sDate) < 0 && dbEndDate.compareTo(sDate) > 0) {
+				return new String("FALSE");
+			}
+			else if(dbStartDate.compareTo(eDate) > 0 && dbEndDate.compareTo(eDate) < 0) {
+				return new String("FALSE");
+			}else if(dbStartDate.compareTo(sDate) < 0 && dbEndDate.compareTo(eDate) > 0) {
+				return new String("FALSE");
+			}
+		}
+		return new String("TRUE");
+	}
+
 
 	/**
 	 * Method to find reservation or rent

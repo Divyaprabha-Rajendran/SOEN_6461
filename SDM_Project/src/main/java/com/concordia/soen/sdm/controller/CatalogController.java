@@ -1,6 +1,7 @@
 
 package com.concordia.soen.sdm.controller;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,6 +47,11 @@ public class CatalogController {
 		if(filterKeys.contains("sort"))
 			filterKeys.remove("sort");
 		String from  = request.getParameter("from");
+		int lessThanYear;
+		if(request.getParameter("lessthanyear") == null)
+			lessThanYear = 0;
+		else
+			lessThanYear = Integer.parseInt(request.getParameter("lessthanyear"));
 		filterKeys.remove("from");
 		System.out.println(from);
 		System.out.println(filterKeys);
@@ -53,6 +59,11 @@ public class CatalogController {
 		Set<String> vehicleTypeSet = cl.stream().map(data -> data.getType()).collect(Collectors.toSet());
 		List<String> vehicleTypeList = vehicleTypeSet.stream().collect(Collectors.toList());
 		List<CatalogDetails> filterData = cl.stream().filter(data -> filterKeys.isEmpty() || filterKeys.contains(data.getType())).collect(Collectors.toList());
+		if(lessThanYear > 0) {
+			int minYear = Calendar.getInstance().get(Calendar.YEAR) - lessThanYear;
+			System.out.println(minYear);
+			filterData = filterData.stream().filter(data -> data.getYear() >= minYear).collect(Collectors.toList());
+		}
 		if(sortOrder != null) {
 			filterData = sortData(filterData, sortOrder);
 		}
