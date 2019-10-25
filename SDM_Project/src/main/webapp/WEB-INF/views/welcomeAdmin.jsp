@@ -18,7 +18,7 @@
 
     <h3><a href="<c:url value="/admin/catalog"/>">View Catalog</a></h3>
 
-    <h3><a href="<c:url value="#"/>">Vehicle Transaction History</a></h3>
+    <h3><a href="<c:url value="/transaction/transactionDetails"/>">Vehicle Transaction History</a></h3>
 
     <h3><a href="<c:url value="/vehicle/dashboard"/>">Vehicle Record Management </a></h3>
 
