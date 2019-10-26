@@ -15,8 +15,8 @@
   </head>
 
   <body>
-
-    <h2>${message}</h2>
+ <%@ include file="header.jsp" %>  
+    
 
     <h3><a href="<c:url value="/admin/catalog"/>">View Catalog</a></h3>
 

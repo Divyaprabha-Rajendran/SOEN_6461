@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 	<p color="red">${message }</p>
 	<form action="${contextPath}/client/create" method="get">
 		<table width="800" border="1">

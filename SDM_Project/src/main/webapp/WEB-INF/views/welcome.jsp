@@ -10,7 +10,8 @@
 <head>
   </head>
   <body>
-    <h2>${message}</h2>
+  <%@ include file="header.jsp" %>  
+    
     <h3><a href="<c:url value="/system/catalog"/>">View Catalog</a></h3>
     
     <h3><a href="<c:url value="/client/dashboard"/>">Client Management System</a></h3>

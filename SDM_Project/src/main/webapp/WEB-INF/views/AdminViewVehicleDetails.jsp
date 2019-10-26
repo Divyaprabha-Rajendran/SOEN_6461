@@ -9,6 +9,7 @@
 <title>Vehicle details</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 <table width="800" border="1">
 <!-- <tr> -->
 <!-- <td  height="40" colspan="2"><font  size="5 "> Vehicle ID : </font></td> -->

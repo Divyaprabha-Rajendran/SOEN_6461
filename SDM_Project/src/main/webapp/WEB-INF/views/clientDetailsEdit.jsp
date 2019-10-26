@@ -9,6 +9,7 @@
 <title>ClientDetails </title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <h2>Edit Details</h2>
 	

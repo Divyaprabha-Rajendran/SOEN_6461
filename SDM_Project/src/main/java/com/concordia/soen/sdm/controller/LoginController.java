@@ -67,7 +67,7 @@ public class LoginController {
 				mv.setViewName("redirect:/");
 			}
 		}
-		if(userName.length()>0) {
+		if(userName != null && userName.length()>0) {
 			System.out.println(userName);
 			String msg = "Welcome " +userName + ".";
 			mv.addObject("message",msg);

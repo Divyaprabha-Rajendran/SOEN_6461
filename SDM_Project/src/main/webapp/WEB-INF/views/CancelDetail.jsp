@@ -10,6 +10,7 @@
 <title>Cancel/Return Dashboard</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 <%-- 	<form action="${contextPath}/cancelReturn/transactionDetail" --%>
 <!-- 		method="POST"> -->
 <!-- 		<input type="text" namplaceholder="Search.." name="transactionId" -->

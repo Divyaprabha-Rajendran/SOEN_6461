@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 <form action="${contextPath}/admin/search" method="get">
 		<input type="text" namplaceholder="Search.." name="searchId" size="30"
 			required="required">

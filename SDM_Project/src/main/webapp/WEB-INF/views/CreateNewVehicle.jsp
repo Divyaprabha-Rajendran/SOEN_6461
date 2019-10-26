@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 	<p>${message}</p>
 	<form action="${contextPath}/vehicle/createNewVehicle" onsubmit="return validate()" method="get">
 	

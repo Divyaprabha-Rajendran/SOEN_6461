@@ -106,6 +106,7 @@
 </script>
 </head>
 <body onload="setMinDates()">
+ <%@ include file="header.jsp" %>  
 	<p hidden="hidden" id="userData">${user }</p>
 	<p>${message }</p>
 	<form action="${contextPath}/root/reservation/reserve" method="get">

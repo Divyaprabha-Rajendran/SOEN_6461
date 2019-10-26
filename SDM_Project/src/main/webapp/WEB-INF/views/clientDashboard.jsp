@@ -10,6 +10,7 @@
 <title>Dashboard</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<h3>
 		<a href="<c:url value="/client/create"/>">Create new client</a>

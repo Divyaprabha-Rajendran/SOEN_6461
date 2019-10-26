@@ -8,6 +8,7 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 	<form action="${contextPath}/system/catalog" method="post">
 		<c:forEach var="type" items="${types}">
 			<input type="checkbox" name="${type}" value="${type }">${type }</br>

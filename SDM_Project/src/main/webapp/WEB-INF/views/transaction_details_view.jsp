@@ -12,6 +12,7 @@
 <title>Transaction Details View Dashboard</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 <p>Please select search criteria:</p>
 <form:form action="${contextPath}/transaction/transactionFiltering"  name="formname" method="post">
 <table>

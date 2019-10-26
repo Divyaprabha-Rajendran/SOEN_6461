@@ -13,7 +13,7 @@
   </head>
 
   <body>
-
+ <%@ include file="header.jsp" %>  
     <h3><a href="<c:url value="/vehicle/createVehicle"/>">Create New Vehicle</a></h3>
 
     </body>

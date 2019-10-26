@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>  
 	<p color="red">${message }</p>
 	<form action="${contextPath}/root/client/viewDetails" method="get">
 		<table width="800" border="1">
@@ -48,7 +49,7 @@
 				<td><input type="number" name="phone" required="required" value=${client.phoneNo }></td>
 			</tr>
 		</table>
-		<a href="${contextPath}/root/client/dashboard">Back</a>
+		<a href="${contextPath}/client/dashboard">Back</a>
 		<a href="${contextPath}/root/client/deleteClient?licenseNumber=${client.licenseNumber}">Delete</a> 
 		<input type="submit" value="Update Record">
 	</form>
