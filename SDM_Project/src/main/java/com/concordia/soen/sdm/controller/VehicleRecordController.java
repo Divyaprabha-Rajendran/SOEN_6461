@@ -72,16 +72,16 @@ public class VehicleRecordController
 		CatalogDetails newVehicle = new CatalogDetails();
 		String message ="";
 		try {
-			newVehicle.setType(request.getParameter("type"));
-			newVehicle.setMake(Integer.parseInt(request.getParameter("make")));
-			newVehicle.setModel(Integer.parseInt(request.getParameter("model")));
-			newVehicle.setYear(Integer.parseInt(request.getParameter("year")));
-			newVehicle.setColor(request.getParameter("color"));
-			newVehicle.setLicensePlate(request.getParameter("licenseNumber"));
+			newVehicle.setType(request.getParameter("type").toLowerCase());
+			newVehicle.setMake(Integer.parseInt(request.getParameter("make").trim()));
+			newVehicle.setModel(Integer.parseInt(request.getParameter("model").trim()));
+			newVehicle.setYear(Integer.parseInt(request.getParameter("year").trim()));
+			newVehicle.setColor(request.getParameter("color").trim().toLowerCase());
+			newVehicle.setLicensePlate(request.getParameter("licenseNumber").trim());
 			newVehicle.setAvailability("YES");
-			if(Integer.parseInt(request.getParameter("cost"))>0)
+			if(Integer.parseInt(request.getParameter("cost".trim()))>0)
 			{
-				System.out.println(Integer.parseInt(request.getParameter("cost")));
+				//System.out.println(Integer.parseInt(request.getParameter("cost")));
 				newVehicle.setCost(Integer.parseInt(request.getParameter("cost").trim()));
 				catalogDao.insertVehicleDetails(newVehicle);
 				message="vehicle created successful";

@@ -24,6 +24,12 @@ import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * @author Divyaprabha Rajendran
+ * Junit for VehiclrRecordController Controller.
+ *
+ */
+
 public class TestVehicleRecordController {
 
 	@Mock
@@ -40,6 +46,11 @@ public class TestVehicleRecordController {
         this.mockMvc = MockMvcBuilders.standaloneSetup(vehicleRecordController).build();
     }
 	
+    /**
+     * Method to test successful insertion of vehicle record. 
+     */
+
+    
 	@Test
 	public void testCreateNewVehicle() {
 		try {
@@ -60,6 +71,10 @@ public class TestVehicleRecordController {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+     * Method to test invalid data and failure of insertion. 
+     */
 	
 	@Test
 	public void testCreateNewVehicleNegativeCost() {
