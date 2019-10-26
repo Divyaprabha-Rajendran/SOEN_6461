@@ -17,6 +17,8 @@
     <h3><a href="<c:url value="/vehicle/createVehicle"/>">Create New Vehicle</a></h3>
 
     </body>
+    
+    <a href="${contextPath}/root/clerk/login">Back</a>
 
      <a href="${contextpath}/root/clerk/logout">Logout</a>
 
