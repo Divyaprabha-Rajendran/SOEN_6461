@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modify Vehicle</title>
 </head>
 <body>
-	<form action="${contextPath}/root/vehicle/updateVehicleDetails" method="post">
+<%@ include file="header.jsp" %>  
+	<form action="${contextPath}/vehicle/updateVehicleDetails" method="post">
 		<table width="800" border="1">
 			<tr>
 				<td height="40" colspan="2"><font size="5 "> Vehicle Id
@@ -53,7 +56,7 @@
 				<td><input name="cost" type="number" value = ${vehicleDetails.cost }></td>
 			</tr>
 		</table>
-		<a href="${contextPath }/root/vehicle/modifyDeleteVehicle">Back</a> <input
+		<a href="${contextPath }/vehicle/modifyDeleteVehicle">Back</a> <input
 			type="submit" id="submit" value="Submit">
 		<pre id="user"></pre>
 	</form>
