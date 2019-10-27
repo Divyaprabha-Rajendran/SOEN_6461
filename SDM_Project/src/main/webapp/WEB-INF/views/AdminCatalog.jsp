@@ -68,6 +68,6 @@
 		</c:forEach>
 	</table>
 	<a href="${contextPath }/clerk/login">Back</a>
-	<a href="${contextpath }/root/">Logout</a>
+	
 </body>
 </html>

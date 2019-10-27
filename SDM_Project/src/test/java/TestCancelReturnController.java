@@ -1,3 +1,4 @@
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
  
@@ -11,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.concordia.soen.sdm.controller.CancelReturnController;
 import com.concordia.soen.sdm.controller.ClientManagementController;
 import com.concordia.soen.sdm.controller.TransactionController;
+import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.dao.TransactionDAO;
 import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
@@ -30,31 +33,35 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import com.concordia.soen.sdm.pojo.Transaction;
-public class TestClient {
+public class TestCancelReturnController {
  
 	@Mock
 	
-	private ClientDAO clientDAO;
+	private CatalogDAO catalogDao;
+	
+       @Mock
+	
+	private TransactionDAO transactionDAO;;
 
     @InjectMocks
-    private ClientManagementController clientManagementController;
+    private CancelReturnController cancelReturnController;
  
     private MockMvc mockMvc;
  
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = MockMvcBuilders.standaloneSetup(clientManagementController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(cancelReturnController).build();
     }
  
     @Test
     public void testViewTransactionHistory() throws Exception {
       
       
-    	 this.mockMvc.perform(get("/client/dashboard"))
+    	 this.mockMvc.perform(get("/cancelReturn/transactionSearch"))
     	            .andExpect(status().isOk())
-    	            .andExpect(view().name("clientDashboard"))
-    	            .andExpect(model().size(1));
+    	            .andExpect(view().name("CancelDetail"))
+    	            ;
     	            
     }
     

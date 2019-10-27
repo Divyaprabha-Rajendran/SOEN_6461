@@ -48,6 +48,6 @@
 
 	</table>
 		<a href="${contextPath }/admin/catalog">Back</a>
-	<a href="${contextpath}/root/clerk/logout">Logout</a>
+	
 </body>
 </html>

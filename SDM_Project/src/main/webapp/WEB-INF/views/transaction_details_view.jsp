@@ -86,7 +86,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-		<c:if test="${errorMsg != null}">
+<c:if test="${errorMsg != null}">
 <h2>${errorMsg}</h2>
 </c:if>
 		<c:if test="${AvailableMsg != null}">
@@ -145,5 +145,6 @@
 
 	</script>
 	<a href="${contextPath}/clerk/login">Back</a>
+	<a href="${contextPath}/transaction/transactionDetails">Clear Search</a>
 	</body>
 </html>

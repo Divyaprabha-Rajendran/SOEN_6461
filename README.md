@@ -19,8 +19,10 @@ Server Side - Java Spring.
 Link to google docs:
 https://drive.google.com/drive/folders/1OyrT9jhmHc54EpIj6IPnHt4_Vbw6PsBj?usp=sharing
 
-Password for login:
+Password for Clerk login:
 username : harish
 password : harish123
+
+Password for Administrator login=>  username : admin ; password : admin123
 
 Kindly set java compiler and java build path to java 1.8
