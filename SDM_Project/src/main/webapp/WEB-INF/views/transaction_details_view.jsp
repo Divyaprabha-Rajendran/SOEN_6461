@@ -86,7 +86,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-		<c:if test="${errorMsg != null}">
+<c:if test="${errorMsg != null}">
 <h2>${errorMsg}</h2>
 </c:if>
 		<c:if test="${AvailableMsg != null}">

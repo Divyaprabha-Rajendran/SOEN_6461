@@ -106,12 +106,15 @@ public class TransactionController {
 		//System.out.println("Data Size:"+transactionDetailList.size());
 		
 			}} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//message = "Please try again. Unknow Error Occurred";
+
+			//	System.out.println("negative");
 				mv.addObject("errorMsg", "Record is not available");
 			e.printStackTrace();
 		}
 		
+		if(transactionDetailList.size()<=0) {
+			mv.addObject("errorMsg", "Record is not available");
+		}
 		mv.setViewName("transaction_details_view");
 		mv.addObject("transactionDetails", transactionDetailList);
 		return mv;
