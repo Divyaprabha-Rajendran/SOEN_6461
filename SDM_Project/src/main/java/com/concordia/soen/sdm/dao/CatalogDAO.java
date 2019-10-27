@@ -12,7 +12,11 @@ import com.concordia.soen.sdm.pojo.CancelReturn;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 import com.concordia.soen.sdm.pojo.Client;
 
-
+/**
+ * 
+ *DAO for Catalog.
+ *
+ */
 public class CatalogDAO {
 
 	@Autowired
