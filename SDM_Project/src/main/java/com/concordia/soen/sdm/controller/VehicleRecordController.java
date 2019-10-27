@@ -16,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.dao.TransactionDAO;
+import com.concordia.soen.sdm.dao.VehicleDao;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
+import com.concordia.soen.sdm.pojo.VehicleDetails;
 
 @Controller
 @RequestMapping("/vehicle/*")
@@ -31,6 +33,9 @@ public class VehicleRecordController
 {
 	@Autowired
 	CatalogDAO catalogDao;
+	@Autowired
+	VehicleDao vehicleDao;
+	
 	
 	/**
 	 * Method to redirect control from welcomeAdmin.jsp to vehicleDashboard.jsp
@@ -65,6 +70,33 @@ public class VehicleRecordController
 	 * @throws DuplicateKeyException when there is a duplication in licensePlate
 	 * @throws Exception To handle any unforeseen exceptions.
 	 */
+	@RequestMapping(value="/modify")
+	public ModelAndView modify(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView("modify_vehicle");
+		String licensePlate = request.getParameter("licensePlate");
+		List<VehicleDetails> vehicleDetails = vehicleDao.getVechicleDetail(licensePlate);
+		view.addObject("vehicleDetails", vehicleDetails.get(0));
+		return view;
+		
+	}
+	
+	@RequestMapping(value="/updateVehicleDetails")
+	public ModelAndView updateVehicleDetails(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView("redirect:/vehicle/modifyDeleteVehicle");
+		VehicleDetails details = new VehicleDetails();
+		details.setAvailability(request.getParameter("availability"));
+		details.setColor(request.getParameter("color"));
+		details.setCost(Integer.parseInt(request.getParameter("cost")));
+		details.setLicensePlate(request.getParameter("licensePlate"));
+		details.setMake(request.getParameter("make"));
+		details.setModel(request.getParameter("model"));
+		details.setType(request.getParameter("type"));
+		details.setVehicleId(Integer.parseInt(request.getParameter("vehicleId")));
+		details.setYear(request.getParameter("year").trim());
+		vehicleDao.updateRecord(details);
+		return view;
+	}
+	
 
 	@RequestMapping(value="/createNewVehicle")
 	public ModelAndView createNewVehicle(HttpServletRequest request) throws Exception {
