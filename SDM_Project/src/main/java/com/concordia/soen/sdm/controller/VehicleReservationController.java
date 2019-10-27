@@ -56,22 +56,27 @@ public class VehicleReservationController {
 			SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // your template here
 			
 			Transaction transaction = new Transaction();
-			transaction.setLicensePlate(request.getParameter("licensePlate"));
-			transaction.setLicenseNumber(request.getParameter("licenseNumber"));
-			String date = request.getParameter("endDate");
-			date = date.replace("T", " ");
-			String dateTime = formater.format(formater.parse(date));
-			transaction.setDuedate(dateTime);
-			date = request.getParameter("startDate");
-			date = date.replace("T", " ");
-			dateTime = formater.format(formater.parse(date));
-			transaction.setStartdate(dateTime);
-			transaction.setStatus(findStatus(date));
-			transaction.setCost(Integer.parseInt(request.getParameter("cost")));
-			catalogDao.updateAvailability("NO", request.getParameter("licensePlate"));
-			transactionDao.insertData(transaction);
-			view.addObject("message", "Successfully Stored");
-			
+			String licensePlate = request.getParameter("licenseNumber");
+			if(isValidLicenseuser(licensePlate)) {
+				transaction.setLicensePlate(request.getParameter("licensePlate"));
+				transaction.setLicenseNumber(request.getParameter("licenseNumber"));
+				String date = request.getParameter("endDate");
+				date = date.replace("T", " ");
+				String dateTime = formater.format(formater.parse(date));
+				transaction.setDuedate(dateTime);
+				date = request.getParameter("startDate");
+				date = date.replace("T", " ");
+				dateTime = formater.format(formater.parse(date));
+				transaction.setStartdate(dateTime);
+				transaction.setStatus(findStatus(date));
+				transaction.setCost(Integer.parseInt(request.getParameter("cost")));
+				catalogDao.updateAvailability("NO", request.getParameter("licensePlate"));
+				transactionDao.insertData(transaction);
+				view.addObject("message", "Successfully Stored");
+			}else {
+				view.addObject("message", "Invalid LicensePlate");
+			}
+
 		}else {
 			CatalogDetails vehicleDetails = catalogDao.getVehicleDetails(request.getParameter("licensePlate"));
 			view.addObject("vehicleDetails", vehicleDetails);
@@ -85,7 +90,16 @@ public class VehicleReservationController {
 		}
 		return view;
 	}
-	
+
+	private boolean isValidLicenseuser(String licensePlate) {
+		try {
+			Client client = clientDao.getClientDetails(licensePlate);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	@ResponseBody
 	@RequestMapping(value="/checkVehicleAvailability", method= {RequestMethod.POST, RequestMethod.GET})
 	public String checkVehicleAvailability(HttpServletRequest request) throws ParseException {
