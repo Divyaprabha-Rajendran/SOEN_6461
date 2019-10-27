@@ -45,6 +45,8 @@ public class LoginController {
 				mv.setViewName("welcomeAdmin");	
 
 			}
+			String msg = "Welcome " +userName + ".";
+			mv.addObject("message",msg);
 
 		}else {
 			System.out.println("reroute login method else");
@@ -61,17 +63,18 @@ public class LoginController {
 				}else if(user.getRole().equalsIgnoreCase("admin")) {
 					mv.setViewName("welcomeAdmin");
 				}
-
+				String msg = "Welcome " +userName + ".";
+				mv.addObject("message",msg);
 				System.out.println("LoginController:Stop");
 			}catch (EmptyResultDataAccessException e) {
 				mv.setViewName("redirect:/");
 			}
 		}
-		if(userName != null && userName.length()>0) {
-			System.out.println(userName);
-			String msg = "Welcome " +userName + ".";
-			mv.addObject("message",msg);
-		}
+//		if(userName.length()>0) {
+//			System.out.println(userName);
+//			String msg = "Welcome " +userName + ".";
+//			mv.addObject("message",msg);
+//		}
 		return mv;
 	}
 	@RequestMapping(value ="/clerk/logout", method = {RequestMethod.POST, RequestMethod.GET})
