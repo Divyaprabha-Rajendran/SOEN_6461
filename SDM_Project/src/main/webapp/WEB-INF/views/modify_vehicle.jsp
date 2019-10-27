@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${contextPath}/vehicle/updateVehicleDetails" method="post">
+	<form action="${contextPath}/root/vehicle/updateVehicleDetails" method="post">
 		<table width="800" border="1">
 			<tr>
 				<td height="40" colspan="2"><font size="5 "> Vehicle Id
@@ -53,7 +53,7 @@
 				<td><input name="cost" type="number" value = ${vehicleDetails.cost }></td>
 			</tr>
 		</table>
-		<a href="${contextPath }/vehicle/modifyDeleteVehicle">Back</a> <input
+		<a href="${contextPath }/root/vehicle/modifyDeleteVehicle">Back</a> <input
 			type="submit" id="submit" value="Submit">
 		<pre id="user"></pre>
 	</form>
