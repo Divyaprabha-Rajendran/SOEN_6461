@@ -79,12 +79,16 @@ public class TransactionDAO {
 	
 	/**
 	 * getAllTransactions method gets all details of all  the transactions of the vehicles from the system 
-	 * @return
+	 * @return list of transactions
 	 */
 	public List<Transaction> getAllTransactions() {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
+	/**
+	 * getVehicleRentRecords method gets record of all vehicles that are rented
+	 * @return list of transactions
+	 */
 	public List<Transaction> getVehicleRentRecords(String numberPlate) {
 		String sql = "SELECT * FROM rentedVehiclesRecord where licensePlate='"+numberPlate+"';";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
