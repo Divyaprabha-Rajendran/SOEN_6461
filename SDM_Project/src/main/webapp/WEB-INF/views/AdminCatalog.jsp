@@ -22,7 +22,10 @@
 		<select name="sort">
 			<option value="year">Sort By year</option>
 			<option value="type">Sort By Vehicle</option>
-		</select> <input type="submit" , value="Filter">
+		</select>
+		<label>Vehicles Less Than Year:</label>
+		<input name="lessthanyear" type="number" min="0" value="0"/>
+		 <input type="submit" , value="Filter">
 	</form>
 	<table border="1">
 		<th>serialno</th>
