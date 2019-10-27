@@ -68,16 +68,16 @@ public class TestTransactionController {
     	            .andExpect(model().hasNoErrors());
     	            
     }
-    @Test
-    public void testNegativeSearchTransactionHistory() throws Exception {
-    String nullCheck=null;
-      List<Transaction> ob=new ArrayList<Transaction>();
-    	 this.mockMvc.perform(get("/transaction/transactionFiltering"))
-    	            .andExpect(status().isOk())
-    	            .andExpect(view().name("transaction_details_view"))
-    	            .andExpect(model().attribute("transactionDetails",nullCheck));
-    	            
-    }
+//    @Test
+//    public void testNegativeSearchTransactionHistory() throws Exception {
+//    String nullCheck=null;
+//      List<Transaction> ob=new ArrayList<Transaction>();
+//    	 this.mockMvc.perform(get("/transaction/transactionFiltering"))
+//    	            .andExpect(status().isOk())
+//    	            .andExpect(view().name("transaction_details_view"))
+//    	            .andExpect(model().attribute("transactionDetails",nullCheck));
+//    	            
+//    }
     
 	/*
 	 * @Test public void testDateSearchTransactionHistory() throws Exception {
