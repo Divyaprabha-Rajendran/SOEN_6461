@@ -11,8 +11,8 @@
 <body>
  <%@ include file="header.jsp" %>  
 <form action="${contextPath}/admin/search" method="get">
-		<input type="text" namplaceholder="Search.." name="searchId" size="30"
-			required="required">
+	<b>License Plate Number</b>	<input type="text" namplaceholder="Search.." name="searchId" size="30"
+			required="required" >
 		<input type="submit" value="search" />
 	</form>
 	<form action="${contextPath}/admin/catalog" method="post">
