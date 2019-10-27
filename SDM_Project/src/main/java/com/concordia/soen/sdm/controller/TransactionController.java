@@ -32,7 +32,12 @@ public class TransactionController {
 	TransactionAvailabilityCheckService  transactionAvailabilityCheck;
 	@Autowired
 	HttpSession httpSession;
-	
+	/**
+	 * This method is for the transaction details. Here we are getting transaction details from database
+	 * @param request is of type HTTPServletRequest 
+	 * @param response is of type HTTPServletResponse 
+	 * @return view is returned which is of type ModelandView
+	 */
 	@RequestMapping(value = "/transaction/transactionDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getTransactionDetails(HttpServletRequest request, HttpServletResponse response) {
 		List<Transaction> transactionDetailList = null;
