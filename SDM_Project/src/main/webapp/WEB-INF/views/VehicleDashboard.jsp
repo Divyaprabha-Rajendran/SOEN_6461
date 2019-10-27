@@ -25,7 +25,7 @@ Vehicle Details</a>
     
     <a href="${contextPath}/root/clerk/login">Back</a>
 
-     <a href="${contextpath}/root/clerk/logout">Logout</a>
+     
 
 </html>
 
