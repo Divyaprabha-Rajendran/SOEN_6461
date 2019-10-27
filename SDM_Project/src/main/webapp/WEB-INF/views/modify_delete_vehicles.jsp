@@ -9,8 +9,18 @@
 <title>Vehicles</title>
 </head>
 <body>
-	<center>
-		<table>
+<%@ include file="header.jsp" %>  
+	<h2>List Of Vehicles</h2>
+		<table width="800" border="1">
+		<th>VehicleId</th>
+		<th>Type</th>
+		<th>Make</th>
+		<th>Model</th>
+		<th>Year</th>
+		<th>Color</th>
+		<th>License Plate</th>
+		<th>Cost</th>
+		<th>Options</th>
 			<c:forEach var="vehicle" items="${vehicleDetails}" varStatus="status">
 				<tr>
 					<td>${vehicle.vehicleId}</td>
@@ -22,14 +32,14 @@
 					<td>${vehicle.licensePlate}</td>
 					<td>${vehicle.cost}</td>
 					<td><a
-						href="${contextPath }/vehicle/modify?licensePlate=${vehicle.licensePlate}">Modify</a>
-					</td>
-					<td><a
+						href="${contextPath }/vehicle/modify?licensePlate=${vehicle.licensePlate}">Modify</a>/<a
 						href="${contextPath }/vehicle/delete?licensePlate=${vehicle.licensePlate}">Delete</a>
 					</td>
+					
 				</tr>
 			</c:forEach>
 		</table>
-	</center>
+	
+	<a href="${contextPath}/vehicle/dashboard">Back</a>
 </body>
 </html>
