@@ -15,6 +15,11 @@
   <body>
  <%@ include file="header.jsp" %>  
     <h3><a href="<c:url value="/vehicle/createVehicle"/>">Create New Vehicle</a></h3>
+    <h3>
+<a href="<c:url value="/vehicle/modifyDeleteVehicle"/>">Modify
+Vehicle Details</a>
+</h3>
+    
 
     </body>
     
