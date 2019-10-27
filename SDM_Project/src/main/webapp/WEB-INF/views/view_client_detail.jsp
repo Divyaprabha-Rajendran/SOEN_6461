@@ -12,7 +12,7 @@
 <body>
  <%@ include file="header.jsp" %>  
 	<p color="red">${message }</p>
-	<form action="${contextPath}/root/client/viewDetails" method="get">
+	<form action="${contextPath}/client/viewDetails" method="get">
 		<table width="800" border="1">
 			<tr>
 				<td height="40" colspan="2"><font size="5 "> First Name
@@ -50,7 +50,7 @@
 			</tr>
 		</table>
 		<a href="${contextPath}/client/dashboard">Back</a>
-		<a href="${contextPath}/root/client/deleteClient?licenseNumber=${client.licenseNumber}">Delete</a> 
+		<a href="${contextPath}/client/deleteClient?licenseNumber=${client.licenseNumber}">Delete</a> 
 		<input type="submit" value="Update Record">
 	</form>
 	<script type="text/javascript">
