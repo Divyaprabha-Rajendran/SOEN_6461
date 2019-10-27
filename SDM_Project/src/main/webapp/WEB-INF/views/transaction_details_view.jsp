@@ -145,5 +145,6 @@
 
 	</script>
 	<a href="${contextPath}/clerk/login">Back</a>
+	<a href="${contextPath}/transaction/transactionDetails">Clear Search</a>
 	</body>
 </html>
