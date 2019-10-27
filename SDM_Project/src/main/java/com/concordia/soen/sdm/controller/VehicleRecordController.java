@@ -70,6 +70,12 @@ public class VehicleRecordController
 	 * @throws DuplicateKeyException when there is a duplication in licensePlate
 	 * @throws Exception To handle any unforeseen exceptions.
 	 */
+	@RequestMapping(value="/modifyDeleteVehicle")
+	public ModelAndView modifyDeleteVehicle() {
+		ModelAndView view = new ModelAndView("modify_delete_vehicles");
+		view.addObject("vehicleDetails", vehicleDao.getAllVehicles());
+		return view;
+	}
 	@RequestMapping(value="/modify")
 	public ModelAndView modify(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView("modify_vehicle");
@@ -78,6 +84,14 @@ public class VehicleRecordController
 		view.addObject("vehicleDetails", vehicleDetails.get(0));
 		return view;
 		
+	}
+	@RequestMapping(value="/delete")
+	public ModelAndView delete(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/vehicle/modifyDeleteVehicle");
+		String licensePlate = request.getParameter("licensePlate");
+		vehicleDao.deleteVehicle(licensePlate);
+		return view;
 	}
 	
 	@RequestMapping(value="/updateVehicleDetails")
