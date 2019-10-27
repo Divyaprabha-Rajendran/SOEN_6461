@@ -23,8 +23,6 @@ Password for Clerk login:
 username : harish
 password : harish123
 
-Password for Administrator login:
-username : admin  
-password : admin123
+Password for Administrator login=>  username : admin ; password : admin123
 
 Kindly set java compiler and java build path to java 1.8
