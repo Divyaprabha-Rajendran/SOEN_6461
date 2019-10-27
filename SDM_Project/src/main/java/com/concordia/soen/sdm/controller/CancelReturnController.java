@@ -33,7 +33,12 @@ public class CancelReturnController {
 
 	@Autowired 
 	private HttpSession httpSession;
-
+	/**
+	 * This method is for the transaction details. Here we are getting transaction details from database
+	 * @param request is of type HTTPServletRequest 
+	 * @param response is of type HTTPServletResponse 
+	 * @return view is returned which is of type ModelandView
+	 */
 
 	@RequestMapping(value ="/cancelReturn/transactionSearch", method =RequestMethod.GET)
 	public ModelAndView transactionSearch(HttpServletRequest request,
