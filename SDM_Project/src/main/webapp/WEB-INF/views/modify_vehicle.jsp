@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modify Vehicle</title>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<%@ include file="header.jsp" %>  
+>>>>>>> branch 'master' of https://github.com/Divyaprabha-Rajendran/SOEN_6461.git
 	<form action="${contextPath}/vehicle/updateVehicleDetails" method="post">
 		<table width="800" border="1">
 			<tr>

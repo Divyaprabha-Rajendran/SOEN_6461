@@ -56,8 +56,8 @@ public class TestVehicleRecordController {
 		try {
 			String Check="vehicle created successful";
 			this.mockMvc.perform(get("/vehicle/createNewVehicle").param("type", "sedan" )
-				 .param("make", "2016")
-				 .param("model", "2019")
+				 .param("make", "Bentley")
+				 .param("model", "Brooklands")
 				 .param("year", "2019")
 				 .param("color" ,"black")
 				 .param("licenseNumber" , "ADS 123")
@@ -81,8 +81,8 @@ public class TestVehicleRecordController {
 		try {
 			String Check="Invalid cost. Please try again.";
 			this.mockMvc.perform(get("/vehicle/createNewVehicle").param("type", "sedan" )
-				 .param("make", "2016")
-				 .param("model", "2019")
+					.param("make", "Bentley")
+					 .param("model", "Brooklands")
 				 .param("year", "2019")
 				 .param("color" ,"black")
 				 .param("licenseNumber" , "ADS 123")
