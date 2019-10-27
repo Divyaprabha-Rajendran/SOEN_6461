@@ -119,8 +119,8 @@ public class VehicleRecordController
 		String message ="";
 		try {
 			newVehicle.setType(request.getParameter("type").toLowerCase());
-			newVehicle.setMake(Integer.parseInt(request.getParameter("make").trim()));
-			newVehicle.setModel(Integer.parseInt(request.getParameter("model").trim()));
+			newVehicle.setMake((request.getParameter("make").trim()));
+			newVehicle.setModel((request.getParameter("model").trim()));
 			newVehicle.setYear(Integer.parseInt(request.getParameter("year").trim()));
 			newVehicle.setColor(request.getParameter("color").trim().toLowerCase());
 			newVehicle.setLicensePlate(request.getParameter("licenseNumber").trim());

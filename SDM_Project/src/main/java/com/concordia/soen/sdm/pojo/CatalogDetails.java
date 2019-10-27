@@ -7,8 +7,8 @@ package com.concordia.soen.sdm.pojo;
 public class CatalogDetails {
 	private int  vehicleId;	
 	private String  type;
-	private int  make;
-	private int  model;
+	private String  make;
+	private String  model;
 	private int  year;
 	private String  color;
 	private String  licensePlate;
@@ -49,33 +49,33 @@ public class CatalogDetails {
 	 /**
      * Getter method for getting make
      *
-     * @return int make
+     * @return String make
      */
-	public int getMake() {
+	public String getMake() {
 		return make;
 	}
 	/**
      * Setter method for setting make
      *
-     * @param int make
+     * @param String make
      */
-	public void setMake(int make) {
+	public void setMake(String make) {
 		this.make = make;
 	}
 	 /**
      * Getter method for getting model
      *
-     * @return int model
+     * @return String model
      */
-	public int getModel() {
+	public String getModel() {
 		return model;
 	}
 	/**
      * Setter method for setting model
     *
-    * @param int model
+    * @param String model
     */
-	public void setModel(int model) {
+	public void setModel(String model) {
 		this.model = model;
 	} 
 	/**
@@ -145,7 +145,7 @@ public class CatalogDetails {
 	/**
      * Getter method for getting cost
     *
-    * @return int costy
+    * @return int cost
     */
 	public int getCost() {
 		return cost;
