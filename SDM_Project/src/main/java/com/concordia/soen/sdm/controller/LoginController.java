@@ -15,6 +15,11 @@ import com.concordia.soen.sdm.pojo.UserLogin;
 
 @Controller
 @RequestMapping("/clerk/*")
+/**
+ * 
+ * Controller for managing login
+ *
+ */
 public class LoginController {
 
 	@Autowired

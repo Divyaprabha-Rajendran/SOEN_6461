@@ -7,9 +7,18 @@ import java.util.Date;
 import java.util.List;
 
 import com.concordia.soen.sdm.pojo.Transaction;
-
+/**
+ * 
+ * This service class is to check the availability of vehicle on particular date 
+ *
+ */
 public class TransactionAvailabilityCheckService {
-
+	/**
+	 * This method is for checking the availability
+	 * @param transaction details list  
+	 * @param availability checking date
+	 * @return  string available or not available
+	 */
 	public String availabilityCheck(List<Transaction> transactionDetailList, Date dateStr) throws ParseException {
 		
 			

@@ -24,6 +24,11 @@ import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
 
 @Controller
 @RequestMapping("/transaction/*")
+/**
+ * 
+ * Controller for managing Transaction History.
+ *
+ */
 public class TransactionController {
 	
 	@Autowired
@@ -33,10 +38,10 @@ public class TransactionController {
 	@Autowired
 	HttpSession httpSession;
 	/**
-	 * This method is for the transaction details. Here we are getting transaction details from database
+	 * This method is for the viewing transaction details. Here we are getting transaction details from database
 	 * @param request is of type HTTPServletRequest 
 	 * @param response is of type HTTPServletResponse 
-	 * @return view is returned which is of type ModelandView
+	 * @return  transaction_details_view jsp is returned with transaction records
 	 */
 	@RequestMapping(value = "/transaction/transactionDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getTransactionDetails(HttpServletRequest request, HttpServletResponse response) {
@@ -48,6 +53,13 @@ public class TransactionController {
 		return mv;
 		
 	}
+	
+	/**
+	 * This method is for the transaction details. Here we are getting transaction details from database
+	 * @param request is of type HTTPServletRequest 
+	 * @param response is of type HTTPServletResponse 
+	 * @return transaction_details_view jsp page  is returned with search results
+	 */
 	@RequestMapping(value = "/transaction/transactionFiltering")
 	public ModelAndView getTransactionData(HttpServletRequest request, HttpServletResponse response) {
 		List<Transaction> transactionDetailList= null;

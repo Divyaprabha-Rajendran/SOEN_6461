@@ -25,7 +25,7 @@ import com.concordia.soen.sdm.pojo.VehicleDetails;
 @Controller
 @RequestMapping("/vehicle/*")
 /**
- * @author Divyaprabha Rajendran
+ * 
  * Controller for managing vehicle records.
  *
  */

@@ -19,7 +19,11 @@ import com.concordia.soen.sdm.pojo.Client;
 
 @Controller
 @RequestMapping("/client/*")
-
+/**
+ * 
+ * Controller for managing client record.
+ *
+ */
 public class ClientManagementController {
 
 	@Autowired
@@ -29,10 +33,10 @@ public class ClientManagementController {
 	private HttpSession httpSession;
 	
 	/**
-	 * THis method dashboard takes request and response as arguments. This is for viewing the client details 
+	 * THis method dashboard takes request and response as arguments. This is for displaying and searching the client details 
 	 * @param request is of type HttpServeltRequest and functions like basic doget  inbuilt method 
 	 * @param response is of type httpserveltResponse and functions like basic dopost 
-	 * @return view of the client details 
+	 * @return clientDashboard jsp is returned with results 
 	 */
 
 	@RequestMapping(value = "/client/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
@@ -67,8 +71,10 @@ public class ClientManagementController {
 	}
 
 	/**
-	 *This method is to create the client with all the required details such as firstname, lastname and licensence number and such fields 
-	 * 
+	 * THis method is to create a new client record
+	 * @param request is of type HttpServeltRequest and functions like basic doget  inbuilt method 
+	 * @param response is of type httpserveltResponse and functions like basic dopost 
+	 * @return add_client jsp is returned 
 	 */
 	@RequestMapping(value = "/client/create")
 	public ModelAndView create(HttpServletRequest request, HttpServletResponse response) {
@@ -101,9 +107,10 @@ public class ClientManagementController {
 	}
 
  /**
-  * this method is to view all the client details 
-  * @param request this takes the request from and in response to that it views the client details 
-  * @return
+  * this method is to view and modify  the client details 
+  * @param request is of type HttpServeltRequest and functions like basic doget  inbuilt method 
+  * @param response is of type httpserveltResponse and functions like basic dopost 
+  * @return view_client_detail is returned 
   */
 	@RequestMapping(value = "/client/viewDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView viewDetails(HttpServletRequest request) {

@@ -94,6 +94,10 @@ public class TransactionDAO {
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
 	
+	/**
+	 *This methods fetch the transaction records based on client license number
+	 * @return list of transactions
+	 */
 	public List<Transaction> getUserTransactions(String licenseNumber) {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licenseNumber=?";
 		return jdbcTemplate.query(sql, new Object[]{licenseNumber},
@@ -110,19 +114,30 @@ public class TransactionDAO {
 	 * 
 	 * }
 	 */
-
+	/**
+	 *This methods fetch the transaction records based on vehicle license plate
+	 * @return list of transactions
+	 */
 	public List<Transaction> getVehicleTransactions(String searchData) {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licensePlate=?";
 		return jdbcTemplate.query(sql, new Object[]{searchData},
                 BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
 
+	/**
+	 *This methods fetch the transaction records based on due date
+	 * @return list of transactions
+	 */
 	public List<Transaction> getdueDateTransactions(Date dueDate) {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE duedate=?";
 		return jdbcTemplate.query(sql, new Object[]{dueDate},
                 BeanPropertyRowMapper.newInstance(Transaction.class));
 	}
 
+	/**
+	 *This methods fetch the transaction records based on transaction status="rented"
+	 * @return list of transactions
+	 */
 	public List<Transaction> getrentedVehicleTransactions(String status) {
 		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE status=?";
 		return jdbcTemplate.query(sql, new Object[]{status},
