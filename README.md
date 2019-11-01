@@ -11,6 +11,7 @@ Team members for the project are
 
 Team Leader for iteration 2 : Divyaprabha Rajendran
 Team Leader for iteration 3 : Swetha Chenna
+Team Leader for iteration 3 : Swetha Chenna
 
 Technologies decided to leverage:
 Database - MySql
