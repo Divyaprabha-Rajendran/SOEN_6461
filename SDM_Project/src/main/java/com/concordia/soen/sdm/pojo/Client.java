@@ -15,6 +15,42 @@ public class Client implements Serializable{
 	private String licenseNumber;
 	private Date licenseExpiryDate;
 	private String phoneNo;
+	private int version;
+	private int clientId;
+	
+	
+	/**
+     * Getter method for getting clientId
+     *
+     * @return int cientId
+     */
+    public int getClientId() {
+		return clientId;
+	}
+    /**
+     * Setter method for setting clientId
+     *
+     * @param int clientId
+     */
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+	/**
+     * Getter method for getting version
+     *
+     * @return int version
+     */
+	public int getVersion() {
+		return version;
+	}
+	  /**
+     * Setter method for setting record version
+     *
+     * @param int version
+     */
+	public void setVersion(int version) {
+		this.version = version;
+	}
 	
     /**
      * Getter method for getting first name
