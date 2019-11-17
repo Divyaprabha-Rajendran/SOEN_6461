@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.dao.TransactionDAO;
+import com.concordia.soen.sdm.mapper.TransactionHistoryMapper;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
 import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
@@ -33,8 +34,12 @@ public class TransactionController {
 	
 	@Autowired
 	TransactionDAO transactionDao;
+	
 	@Autowired
 	TransactionAvailabilityCheckService  transactionAvailabilityCheck;
+	
+	@Autowired
+	TransactionHistoryMapper  transactionHistoryMapper;
 	@Autowired
 	HttpSession httpSession;
 	/**
@@ -71,18 +76,20 @@ public class TransactionController {
 		String availability=null;
 		mv.addObject("AvailableMsg",null);
 		mv.addObject("errorMsg", null);
-		//System.out.println("Data Size1:"+flag);
 		try {
 			if((CriteriaData!=null)) {
 		if(  CriteriaData.equalsIgnoreCase("userId")) {
 			
-			transactionDetailList=transactionDao.getUserTransactions(SearchData);
+			transactionDetailList=transactionHistoryMapper.selectTransactionRecordClientId(SearchData);
+			
 		}else if(CriteriaData.equalsIgnoreCase("vehicleId")) {
-			transactionDetailList=transactionDao.getVehicleTransactions(SearchData);
+			transactionDetailList=transactionHistoryMapper.selectTransactionRecordVehicleId(SearchData);
+			
 			if(dateFlag !=null) {
 				String dueDate=request.getParameter("Date");
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				Date dateStr = formatter.parse(dueDate);
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				dueDate = dueDate.replace("T", " ");
+				Date dateStr= formatter.parse(dueDate);
 			 availability=transactionAvailabilityCheck.availabilityCheck(transactionDetailList,dateStr);
 			 
 			 if(availability.equalsIgnoreCase("available")) {
@@ -94,20 +101,18 @@ public class TransactionController {
 			
 		}else if(CriteriaData.equalsIgnoreCase("dueDateOption")) {
 			String dueDate=request.getParameter("Date");
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			
-			Date dateStr = formatter.parse(dueDate);
-			transactionDetailList=transactionDao.getdueDateTransactions(dateStr);
-		
+			dueDate = dueDate.replace("T", " ");
+			String dateTime = formatter.format(formatter.parse(dueDate));
+			transactionDetailList=transactionHistoryMapper.selectTransactionRecordDate(dateTime);
 		}else if(CriteriaData.equalsIgnoreCase("rentedVehicles")) {
-			transactionDetailList=transactionDao.getrentedVehicleTransactions("rented");
+			transactionDetailList=transactionHistoryMapper.selectTransactionRentedVehicles("rented");
 		
 		}
-		//System.out.println("Data Size:"+transactionDetailList.size());
 		
 			}} catch (Exception e) {
 
-			//	System.out.println("negative");
 				mv.addObject("errorMsg", "Record is not available");
 			e.printStackTrace();
 		}

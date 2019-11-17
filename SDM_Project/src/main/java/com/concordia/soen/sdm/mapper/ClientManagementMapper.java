@@ -120,10 +120,6 @@ public class ClientManagementMapper {
 	return updateCheck;
 	}
 
-	public void delete(String licenseNumber) throws ClassNotFoundException, SQLException {
-		clientTableDataGateway.delete(licenseNumber);
-		
-	}
 	
 	
 

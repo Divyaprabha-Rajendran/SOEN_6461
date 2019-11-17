@@ -11,6 +11,8 @@
     <bean id="vehicleDao" class="com.concordia.soen.sdm.dao.VehicleDao" />
     <bean id="clientManagementMapper" class="com.concordia.soen.sdm.mapper.ClientManagementMapper"/>
     <bean id="clientTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway"/>
+    <bean id="TransactionHistoryMapper" class="com.concordia.soen.sdm.mapper.TransactionHistoryMapper"/>
+    <bean id="TransactionHistoryTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.TransactionHistoryTableDataGateway"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>
