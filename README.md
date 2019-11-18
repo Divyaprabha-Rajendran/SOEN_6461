@@ -26,4 +26,8 @@ password : harish123
 
 Password for Administrator login=>  username : admin ; password : admin123
 
-Kindly set java compiler and java build path to java 1.8
+How to Run application:
+-->Kindly set java compiler and java build path to java 1.8
+-->Configure(maven run with goal) to tomcat7:run
+-->Run as and select as Maven build 
+-->select local host link (http://localhost:8080/root) and paste it in browser.
