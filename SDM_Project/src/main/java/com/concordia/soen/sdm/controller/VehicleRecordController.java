@@ -120,7 +120,6 @@ public class VehicleRecordController
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	//	vehicleDao.deleteVehicle(licensePlate);
 		return view;
 	}
 	
@@ -174,7 +173,6 @@ public class VehicleRecordController
 
 			if(Integer.parseInt(request.getParameter("cost".trim()))>0)
 			{
-				//System.out.println(Integer.parseInt(request.getParameter("cost")));
 				int cost=Integer.parseInt(request.getParameter("cost").trim());
 				vehicleRecordMapper.insert(type,make,model,year,color,licensePlate,availability,cost);
 				message="vehicle created successful";

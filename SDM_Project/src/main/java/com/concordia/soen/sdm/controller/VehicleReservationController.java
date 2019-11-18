@@ -60,7 +60,6 @@ public class VehicleReservationController {
 			Client client=isValidLicenseuser(licenseNumber);
 			if(client!=null) {
 				String licensePlate=request.getParameter("licensePlate");
-				///String licenseNumber=request.getParameter("licenseNumber"));
 				int vehicleId=(int) httpSession.getAttribute("reserveVehicleId");
 				String date = request.getParameter("endDate");
 				date = date.replace("T", " ");
@@ -72,17 +71,13 @@ public class VehicleReservationController {
 				String startdate=(dateTime);
 				String status=(findStatus(date));
 				int Cost=Integer.parseInt(request.getParameter("cost"));
-				///Client clientDetails =vehicleReservationMapper.select(licenseNumber);
 				int clientId=(client.getClientId());
-				//System.out.println("VehicleiD:"+httpSession.getAttribute("reserveVehicleId"));
-			//	System.out.println("ClientID:Reservation:"+clientDetails.getClientId());
-				//transaction.setClientId(clientDetails.getClientId());
 				
 	
 				if(status.equalsIgnoreCase("rented")) {
 				vehicleReservationMapper.updateAvailability("NO", request.getParameter("licensePlate"));}
-			boolean reservationStatus=vehicleReservationMapper.insertData(licenseNumber,licensePlate,duedate,startdate,status,Cost,clientId,vehicleId);
-			//	transactionDao.insertData(licenseNumber,licensePlate,duedate,startdate,status,Cost,clientId,vehicleId);
+				boolean reservationStatus=vehicleReservationMapper.insertData(licenseNumber,licensePlate,duedate,startdate,status,Cost,clientId,vehicleId);
+		
 				if(reservationStatus==true) {
 				view.addObject("message", "Reservation Successful");}
 				else {
@@ -99,11 +94,9 @@ public class VehicleReservationController {
 			CatalogDetails vehicleDetails = vehicleReservationMapper.getVehicle(request.getParameter("licensePlate"));
 				
 			httpSession.setAttribute("reserveVehicleId", vehicleDetails.getVehicleId());
-			//	catalogDao.getVehicleDetails(request.getParameter("licensePlate"));
 			view.addObject("vehicleDetails", vehicleDetails);
 			Map<String, String> userData = new HashMap<String, String>();
 			List<Client> clientDetails = vehicleReservationMapper.getAllClientDetails();
-				//	clientDao.getAllClientDetails();
 			clientDetails.stream().forEach(data -> {
 				String values = data.getFirstName()+","+data.getLastName()+","+data.getPhoneNo()+","+data.getClientId();
 				userData.put(data.getLicenseNumber(), values);
@@ -145,7 +138,6 @@ public class VehicleReservationController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				//transactionDao.getVehicleRentRecords(numberPlate);
 		for(int i = 0; i < records.size(); i++) {
 			Transaction data = records.get(i);
 			Date dbStartDate = format.parse(data.getStartdate());
@@ -173,7 +165,7 @@ public class VehicleReservationController {
 	
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date std = format.parse(startDate);
-String SystemStd=		format.format(date);
+		String SystemStd=		format.format(date);
 		if (std.compareTo(format.parse(SystemStd)) == 0) {
 			return "rented";
 		}else {

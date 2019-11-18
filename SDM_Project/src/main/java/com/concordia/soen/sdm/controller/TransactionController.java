@@ -73,7 +73,6 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction/transactionFiltering")
 	public ModelAndView getTransactionData(HttpServletRequest request, HttpServletResponse response) {
 		List<Transaction> transactionDetailList= null;
-		//transactionDetailList=transactionDao.getAllTransactions();
 		ModelAndView mv = new ModelAndView();
 		String CriteriaData=request.getParameter("criteriaOption");
 		String SearchData=request.getParameter("searchData");

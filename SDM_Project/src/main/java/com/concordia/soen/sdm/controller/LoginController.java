@@ -40,7 +40,6 @@ public class LoginController {
 	@RequestMapping(value ="/clerk/login", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response) {
-		//	System.out.println(httpSession.getAttribute("clerkName"));
 		System.out.println("reroute login method");
 		String userName = null;
 		ModelAndView mv=new ModelAndView();
