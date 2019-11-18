@@ -1,5 +1,6 @@
 package com.concordia.soen.sdm.controller;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
+import com.concordia.soen.sdm.mapper.AdminCatalogMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 /** 
  * CatalogController has two methods
@@ -30,6 +32,8 @@ public class AdminCatalogController {
 	CatalogDAO catalogDao;
 	
 	@Autowired
+	AdminCatalogMapper adminCatalogMapper;
+	@Autowired
 	HttpSession httpSession;
 	
 	/**
@@ -42,7 +46,17 @@ public class AdminCatalogController {
 	public ModelAndView catalog(HttpServletRequest request,
 			   HttpServletResponse response) {
 		System.out.print("hello u are in admin");
-		List<CatalogDetails> cl=catalogDao.all();
+		List<CatalogDetails> cl=null;
+		 try {
+			cl=adminCatalogMapper.selectAllRecord();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+
 		System.out.print(cl.get(0).getLicensePlate());
 		List<String> filterKeys = (List<String>) request.getParameterMap().keySet().stream().collect(Collectors.toList());
 		if(filterKeys.contains("sort"))
@@ -113,17 +127,7 @@ public class AdminCatalogController {
 		view.addObject("nextId", nextId);
 		return view;
 	}
-//	@RequestMapping(value = "/search", method = { RequestMethod.GET, RequestMethod.POST })
-//	public ModelAndView searchcatalog(HttpServletRequest request,
-//			   HttpServletResponse response) {
-//		String  searchId =request.getParameter("searchId");
-//		System.out.print(searchId);
-//		CatalogDetails cl=catalogDao.second(searchId);
-//		System.out.print(cl.getColor()+cl.getCost()+cl.getLicensePlate());
-//		ModelAndView view = new ModelAndView("search");
-//		view.addObject("hello",cl);
-//		return view;
-//	}
+
 	/**
 	 * searchcatalog takes licenceplate as parameter and it  is written to view the vehicle type details and return the vehicle data to the user 
 	 * @param request this is the request of type HttpServletRequest and is send as an argument to the servlet service method

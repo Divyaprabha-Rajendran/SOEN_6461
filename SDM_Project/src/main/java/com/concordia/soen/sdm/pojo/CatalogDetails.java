@@ -14,6 +14,15 @@ public class CatalogDetails {
 	private String  licensePlate;
 	private String  availability;
 	private int cost;
+	private int version;
+	
+	
+	 public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
 	 /**
      * Getter method for getting vehicle id
      *
