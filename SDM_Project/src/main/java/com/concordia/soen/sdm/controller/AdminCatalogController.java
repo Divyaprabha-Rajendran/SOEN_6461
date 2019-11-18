@@ -127,17 +127,7 @@ public class AdminCatalogController {
 		view.addObject("nextId", nextId);
 		return view;
 	}
-//	@RequestMapping(value = "/search", method = { RequestMethod.GET, RequestMethod.POST })
-//	public ModelAndView searchcatalog(HttpServletRequest request,
-//			   HttpServletResponse response) {
-//		String  searchId =request.getParameter("searchId");
-//		System.out.print(searchId);
-//		CatalogDetails cl=catalogDao.second(searchId);
-//		System.out.print(cl.getColor()+cl.getCost()+cl.getLicensePlate());
-//		ModelAndView view = new ModelAndView("search");
-//		view.addObject("hello",cl);
-//		return view;
-//	}
+
 	/**
 	 * searchcatalog takes licenceplate as parameter and it  is written to view the vehicle type details and return the vehicle data to the user 
 	 * @param request this is the request of type HttpServletRequest and is send as an argument to the servlet service method

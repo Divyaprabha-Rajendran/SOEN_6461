@@ -11,11 +11,20 @@ import com.concordia.soen.sdm.pojo.CatalogDetails;
 import com.concordia.soen.sdm.pojo.Transaction;
 import com.concordia.soen.sdm.tableDataGateway.AdminCatalogTableDataGateway;
 import com.concordia.soen.sdm.tableDataGateway.ClerkCatalogTableDataGateway;
-
+/**
+ * 
+ * Mapper class for AdminCatalog
+ *
+ */
 public class AdminCatalogMapper {
 	@Autowired
 	AdminCatalogTableDataGateway adminCatalogTableDataGateway;
-
+	/**
+	 * THis method will read a record from database
+	 * @param vehicleid,type,make,model,year,color,licenseplate,availability,cost,version 
+	 *  
+	 *
+	 */
 	public List<CatalogDetails> selectAllRecord() throws ClassNotFoundException, SQLException {
 		ResultSet rs=adminCatalogTableDataGateway.selectMultipleRows();
 		List<CatalogDetails> catalogDetailsList =new ArrayList<CatalogDetails>();

@@ -4,9 +4,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * Table data gateway class for Admincatalog
+ *
+ */
 public class AdminCatalogTableDataGateway {
-
+	/**
+	 * THis method will read a record from database
+	 * @return Resultset object 
+	 *
+	 */
 	public ResultSet selectMultipleRows() throws ClassNotFoundException, SQLException {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
 		Connection connection=jdbc.getConnection(); 

@@ -13,6 +13,10 @@
     <bean id="clientTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway"/>
     <bean id="TransactionHistoryMapper" class="com.concordia.soen.sdm.mapper.TransactionHistoryMapper"/>
     <bean id="TransactionHistoryTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.TransactionHistoryTableDataGateway"/>
+    <bean id="clerkCatalogMapper" class="com.concordia.soen.sdm.mapper.ClerkCatalogMapper"/>
+    <bean id="clerkCatalogTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.ClerkCatalogTableDataGateway"/>
+    <bean id="adminCatalogMapper" class="com.concordia.soen.sdm.mapper.AdminCatalogMapper"/>
+    <bean id="adminCatalogTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.AdminCatalogTableDataGateway"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>
