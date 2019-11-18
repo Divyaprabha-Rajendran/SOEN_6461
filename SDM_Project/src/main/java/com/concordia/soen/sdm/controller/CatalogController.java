@@ -1,6 +1,7 @@
 
 package com.concordia.soen.sdm.controller;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
+import com.concordia.soen.sdm.mapper.ClerkCatalogMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 /** 
  * CatalogController has two methods
@@ -29,7 +31,8 @@ public class CatalogController {
 
 	@Autowired
 	CatalogDAO catalogDao;
-	
+	@Autowired
+	ClerkCatalogMapper clerkCatalogMapper;
 	@Autowired
 	HttpSession httpSession;
 	
@@ -42,7 +45,16 @@ public class CatalogController {
 	@RequestMapping(value="/catalog")
 	public ModelAndView catalog(HttpServletRequest request,
 			   HttpServletResponse response) {
-		List<CatalogDetails> cl=catalogDao.all();
+		List<CatalogDetails> cl=null;
+		try {
+			cl = clerkCatalogMapper.selectAllRecord();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		List<String> filterKeys = (List<String>) request.getParameterMap().keySet().stream().collect(Collectors.toList());
 		if(filterKeys.contains("sort"))
 			filterKeys.remove("sort");
