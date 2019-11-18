@@ -1,5 +1,6 @@
 package com.concordia.soen.sdm.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.dao.TransactionDAO;
+import com.concordia.soen.sdm.mapper.CancelReturnMapper;
 //import com.concordia.soen.sdm.dao.TransactionsaveDAO;
 import com.concordia.soen.sdm.pojo.CancelReturn;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
@@ -23,11 +25,11 @@ import com.concordia.soen.sdm.pojo.Transaction;
 @RequestMapping("/cancelReturn/*")
 public class CancelReturnController {
 
-	@Autowired
-	CatalogDAO catalogDao;
 	
 	@Autowired
-	TransactionDAO transactionDAO;
+	CancelReturnMapper cancelReturnMapper;
+	
+	
 	//TransactionsaveDAO savereturn;
 	Transaction transaction;
 
@@ -44,93 +46,45 @@ public class CancelReturnController {
 	public ModelAndView transactionSearch(HttpServletRequest request,
 			HttpServletResponse response) {
 		httpSession=request.getSession();
+		List<CancelReturn> vehicleDetails =null;
 		if(request.getParameter("licensePlate") != null) {
+			try {
 			String licensePlate = request.getParameter("licensePlate"); 
-			catalogDao.updateAvailability("YES", licensePlate); 
+			String operation = request.getParameter("operation"); 
+			String reservationId=request.getParameter("reservationId");
+			System.out.println("Reservation Id:"+reservationId);
+			System.out.println("License Plate:"+licensePlate);
+			System.out.println("Operation:"+operation);
+			if(operation.equalsIgnoreCase("reserved")) {
+			
+					cancelReturnMapper.cancel(reservationId);
+				
+			}else if(operation.equalsIgnoreCase("rented")) {
+				cancelReturnMapper.vehicleReturn(licensePlate,reservationId);
+			}
+			}
+		 catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			System.out.println("done");
 		}
-		List<CancelReturn> vehicleDetails = catalogDao.getRentedVehicles();
+		 try {
+			vehicleDetails	= cancelReturnMapper.getRentedVehicles();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ModelAndView mv=new ModelAndView("CancelDetail");
 		mv.addObject("vehicleDetails", vehicleDetails);
 		return mv;
 	}
-	
-	
 
-	@RequestMapping(value ="/cancelReturn/transactionDetail", method =RequestMethod.POST)
-	public ModelAndView transactionDetail(HttpServletRequest request,
-			HttpServletResponse response) {
-		System.out.println("checking detail");
-		String transactionId=request.getParameter("transactionId");  
-		int reservationId=Integer.parseInt(transactionId);
-		Transaction transaction=transactionDAO.getTransactionID(reservationId);
-		System.out.println("transactiondetail");
-		httpSession=request.getSession();
-		httpSession.setAttribute("searchtransactionDetails", transaction);
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("CancelDetail");
-		mv.addObject("transaction", transaction);
-		return mv;
-	}
-
-
-
-	@RequestMapping(value ="/cancelReturn/transactionExtract",method=RequestMethod.GET) 
-	public ModelAndView transactionExtract(HttpServletRequest request, HttpServletResponse response)
-	{ 
-		System.out.println("rerouting to same page details"); 
-		String transactionId=request.getParameter("reservationId");
-		System.out.println(transactionId); 
-		int reservationId=Integer.parseInt(transactionId); 
-		Transaction transaction=transactionDAO.getTransactionID(reservationId);
-		System.out.println("transactionId:"+transactionId);
-		// System.out.println(transaction.getStatus());
-		httpSession=request.getSession(); 
-		// Transaction transaction=(Transaction)httpSession.getAttribute("searchtransaction extract" );
-		ModelAndView mv=new ModelAndView(); 
-		mv.setViewName("TransactionDetail");
-		mv.addObject("transaction", transaction); 
-
-		return mv;
-	}
-
-	@RequestMapping(value ="/cancelReturn/reservedsave",method=RequestMethod.GET) 
-	public ModelAndView returnsave(HttpServletRequest request, HttpServletResponse response)
-	{ 
-		System.out.println("saving to db"); 
-		String transactionstatus=request.getParameter("status");
-		String transactionId=request.getParameter("reservationId");
-
-		int reservationId=Integer.parseInt(transactionId);
-		System.out.println(reservationId); 
-		Transaction transactionget=transactionDAO.getTransactionID(reservationId);
-		Transaction transactionstat=transactionDAO.getTransactionStatus(transactionstatus);
-		Transaction transactionsave=transactionDAO.getreturnsave(transactionstat);
-		httpSession=request.getSession();
-		ModelAndView mv=new ModelAndView(); 
-		mv.setViewName("savereservedstatus");
-		//  mv.addObject("transactionstatus", transaction); 
-		System.out.println("transactionstatus:"+transactionsave);
-		return mv;
-	}
-
-	@RequestMapping(value ="/cancelReturn/rentalsave",method=RequestMethod.GET) 
-	public ModelAndView rentalsave(HttpServletRequest request, HttpServletResponse response)
-	{ 
-		System.out.println("saving return to db"); 
-		String transactionstatus=request.getParameter("status");
-		String transactionId=request.getParameter("reservationId");
-		//System.out.println(transactionId); 
-		int reservationId=Integer.parseInt(transactionId);
-
-		Transaction transactionget=transactionDAO.getTransactionID(reservationId);
-		Transaction transactionstat=transactionDAO.getTransactionStatus(transactionstatus);
-		Transaction transactionreturn=transactionDAO.getreturnsave(transactionstat);
-		httpSession=request.getSession();
-		ModelAndView mv=new ModelAndView(); 
-		mv.setViewName("Returnedsave");
-		//  mv.addObject("transactionstatus", transactionreturn); 
-		System.out.println("transactionstatus:"+transactionreturn);
-		return mv;
-	}
 }

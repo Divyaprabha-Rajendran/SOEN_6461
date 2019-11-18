@@ -13,6 +13,8 @@
     <bean id="clientTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway"/>
     <bean id="TransactionHistoryMapper" class="com.concordia.soen.sdm.mapper.TransactionHistoryMapper"/>
     <bean id="TransactionHistoryTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.TransactionHistoryTableDataGateway"/>
+        <bean id="CancelReturnMapper" class="com.concordia.soen.sdm.mapper.CancelReturnMapper"/>
+    <bean id="CancelReturnTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.CancelReturnTableDataGateway"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>

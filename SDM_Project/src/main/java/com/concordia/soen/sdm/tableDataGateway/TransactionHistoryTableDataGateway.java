@@ -10,8 +10,29 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import com.concordia.soen.sdm.pojo.Transaction;
-
+/**
+ * 
+ * Table data gateway class for transaction history
+ *
+ */
 public class TransactionHistoryTableDataGateway {
+	
+	/**
+	 * THis method will insert a record in database
+	 * @return Resultset object 
+	 *
+	 */
+	public ResultSet selectMultipleRows() throws ClassNotFoundException, SQLException {
+		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
+		Connection connection=jdbc.getConnection(); 
+		Statement statement = connection.createStatement();
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord";
+	    System.out.println("Select multiple rows Statement:Start"); 
+		ResultSet rs = statement.executeQuery(sql);
+	    System.out.println("Select multiple rows Statement:Finish"); 
+		return rs; 
+	}
+
 
 	/**
 	 * THis method will retrieve a record from database with respect to vehicle number

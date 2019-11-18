@@ -1,5 +1,6 @@
 package com.concordia.soen.sdm.controller;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,8 +52,16 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction/transactionDetails", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getTransactionDetails(HttpServletRequest request, HttpServletResponse response) {
 		List<Transaction> transactionDetailList = null;
-		transactionDetailList=transactionDao.getAllTransactions();
 		ModelAndView mv = new ModelAndView();
+		try {
+			transactionDetailList=transactionHistoryMapper.selectAll();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mv.setViewName("transaction_details_view");
 		mv.addObject("transactionDetails", transactionDetailList);
 		return mv;

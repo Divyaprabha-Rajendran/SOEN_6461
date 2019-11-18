@@ -11,18 +11,7 @@
 </head>
 <body>
  <%@ include file="header.jsp" %>  
-<%-- 	<form action="${contextPath}/cancelReturn/transactionDetail" --%>
-<!-- 		method="POST"> -->
-<!-- 		<input type="text" namplaceholder="Search.." name="transactionId" -->
-<!-- 			size="30" required="required"> <input type="submit" -->
-<!-- 			value="search" /> -->
-<!-- 	</form> -->
-<%-- 	<c:if test="${transaction != null}"> --%>
-<!-- 		<h3> -->
-<!-- 			<a -->
-<%-- 				href="<c:url value="/cancelReturn/transactionExtract?reservationId=${transaction.reservationId}"/>">${transaction.reservationId}</a> --%>
-<!-- 		</h3> -->
-<%-- 	</c:if> --%>
+
 	<table width="800" border="1">
 		<th>Vehicle Type</th>
 		<th>License Plate</th>
@@ -41,8 +30,12 @@
 				<td>${vehicle.dueDate}</td>
 				<td>${vehicle.licenseNumber}</td>
 				<td>${vehicle.cost}</td>
-				<td><a href="${contextPath }/cancelReturn/transactionSearch?licensePlate=${vehicle.licensePlate}&licenseNumber=${vehicle.licenseNumber}">Cancel/Return</a>
-			</tr>
+<c:if test="${vehicle.status=='reserved'}">
+						<td><a href="${contextPath }/cancelReturn/transactionSearch?licensePlate=${vehicle.licensePlate}&reservationId=${vehicle.reservationId}&operation=${vehicle.status}">Cancel</a>
+				</c:if>
+				<c:if test="${vehicle.status=='rented'}">
+						<td><a href="${contextPath }/cancelReturn/transactionSearch?licensePlate=${vehicle.licensePlate}&reservationId=${vehicle.reservationId}&operation=${vehicle.status}">Return</a>
+				</c:if>			</tr>
 		</c:forEach>
 
 	</table>

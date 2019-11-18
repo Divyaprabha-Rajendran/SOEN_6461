@@ -12,11 +12,41 @@ import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
 import com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway;
 import com.concordia.soen.sdm.tableDataGateway.TransactionHistoryTableDataGateway;
-
+/**
+ * 
+ * Mapper class for TransactionHistory
+ *
+ */
 public class TransactionHistoryMapper {
 	@Autowired
 	TransactionHistoryTableDataGateway transactionHistoryTableDataGateway;
-	
+
+	/**
+	 * THis method will select all record in database
+	 * @return list of transaction
+	 *  
+	 *
+	 */
+	public List<Transaction> selectAll()throws ClassNotFoundException, SQLException {
+		ResultSet rs=transactionHistoryTableDataGateway.selectMultipleRows();
+		List<Transaction> transactionList =new ArrayList<Transaction>();
+		
+		while(rs.next()){
+			Transaction transaction = new Transaction();
+			
+			transaction.setReservationId(rs.getInt("reservationId"));
+			transaction.setStartdate(rs.getString("startdate"));
+			transaction.setDuedate(rs.getString("duedate"));
+			transaction.setLicenseNumber(rs.getString("licenseNumber"));
+			transaction.setLicensePlate(rs.getString("licensePlate"));
+			transaction.setStatus(rs.getString("status"));
+			transaction.setCost(rs.getInt("cost"));
+			transactionList.add(transaction);
+			
+		}
+		
+		return  transactionList;
+	}
 	
 	/**
 	 * THis method will retrieve a record from database according to duedate
