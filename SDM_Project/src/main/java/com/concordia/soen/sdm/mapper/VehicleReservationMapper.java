@@ -14,8 +14,22 @@ import com.concordia.soen.sdm.tableDataGateway.VehicleReservationTableDataGatewa
 
 public class VehicleReservationMapper {
 
+	/**
+	 * 
+	 *Mapper to VehicleReservationController.
+	 *
+	 */
+
 	@Autowired
 	VehicleReservationTableDataGateway vehicleReservationTableDataGateway;
+	
+	/**
+	 * 
+	 *Method to select a vehicle given a parameter.
+	 *@param parameter parameter selected.
+	 *@return CatalogDetails details of the vehicle to be returned.
+	 */
+
 	
 	synchronized public CatalogDetails getVehicle(String parameter) throws ClassNotFoundException, SQLException {
 		ResultSet rs=vehicleReservationTableDataGateway.selectVehicle(parameter);
@@ -37,6 +51,13 @@ public class VehicleReservationMapper {
 		return vehicleDetails;
 	}
 
+	/**
+	 * Method to return all the clientdetails
+	 *@return List<Client> list of all clientDetails.
+	 *
+	 */
+
+	
 	public List<Client> getAllClientDetails() throws ClassNotFoundException, SQLException {
 		ResultSet rs=vehicleReservationTableDataGateway.getAllClientDetails();
 		List<Client> clientList =new ArrayList<Client>();
@@ -57,6 +78,13 @@ public class VehicleReservationMapper {
 		
 	}
 
+	/**
+	 *mathod to return a particular client given the parameter 
+	 *@param String parameter parameter to select a client
+	 *@return Client with 
+	 */
+
+	
 	public Client select(String parameter) throws ClassNotFoundException, SQLException {
 		ResultSet rs=vehicleReservationTableDataGateway.select(parameter);
 		Client client = new Client();
@@ -74,10 +102,31 @@ public class VehicleReservationMapper {
 		return client;
 	}
 
+	/**
+	 * 
+	 *Method to update the availability for the given licenseplate
+	 *@param String availability availability to be updated.
+	 *@param String licensePlate vehicle to be updated.
+	 */
+
+	
 	public void updateAvailability(String availability, String licensePlate) throws ClassNotFoundException, SQLException {
 		vehicleReservationTableDataGateway.updateAvailability(availability,licensePlate);
 		
 	}
+
+	/**
+	 * Method to insert reservation data to the table
+	 * @param String licensePlate licensePlate of the vehicle
+	 * @param String licenseNumber licenseNumber of the client
+	 * @param String duedate duedate the vehicle to be returned.
+	 * @param String startDate starting date of the reservation
+	 * @param String status status to be updated for the reservation. 
+	 * @param int cost cost per day of the vehicle
+	 * @param int clientId client who is making the reservation.
+	 * @param int vehicleId vehicle which is reserved.
+	 * @return boolean update success or failure message.
+	 */
 
 
 	synchronized public boolean insertData(String licenseNumber, String licensePlate, String duedate, String startdate, String status,
@@ -98,6 +147,14 @@ public class VehicleReservationMapper {
 	
 		
 	}
+
+	
+	/**
+	 * 
+	 *Method to return all the reservation record related to licenseplate
+	 *@param String numberPlate licensePlate to be selected.  
+	 *@return List<Transaction> records related to the licensePlate.
+	 */
 
 	public List<Transaction> getVehicleRentRecords(String numberPlate) throws SQLException, ClassNotFoundException {
 		ResultSet rs=vehicleReservationTableDataGateway.getVehicleRentRecords(numberPlate);
