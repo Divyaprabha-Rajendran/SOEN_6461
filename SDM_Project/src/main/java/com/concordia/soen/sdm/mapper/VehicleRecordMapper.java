@@ -92,6 +92,27 @@ public class VehicleRecordMapper {
 		System.out.println("Select  Vehicles:Stop");
 		return vehicleDetails;
 	}
+	
+	public boolean updateVehicle(String type, String make, String model, String year, String color, String licensePlate,
+			String availability, int cost, int vehicleId, int version) throws ClassNotFoundException, SQLException {
+		CatalogDetails newVehicle = new CatalogDetails();
+		
+		System.out.println("update   Vehicles:Start");
+		newVehicle.setType(type);
+		newVehicle.setMake(make);
+		newVehicle.setModel(model);
+		newVehicle.setYear(Integer.parseInt(year));
+		newVehicle.setColor(color);
+		newVehicle.setLicensePlate(licensePlate);
+		newVehicle.setAvailability(availability);
+		newVehicle.setCost(cost);
+		newVehicle.setVersion(version+1);
+		newVehicle.setVehicleId(vehicleId);
+		boolean updateVehicleCheck=vehicleRecordTableDataGateway.updateVehicle(newVehicle,version);
+		return updateVehicleCheck;
+		
+		
+	}
 
 	
 	public void delete(String licensePlate) throws ClassNotFoundException, SQLException {
