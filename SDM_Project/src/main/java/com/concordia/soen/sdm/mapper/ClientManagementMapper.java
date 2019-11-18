@@ -13,6 +13,7 @@ import org.springframework.dao.DuplicateKeyException;
 
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.pojo.Client;
+import com.concordia.soen.sdm.pojo.Transaction;
 import com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway;
 /**
  * 
@@ -119,6 +120,33 @@ public class ClientManagementMapper {
 	
 	return updateCheck;
 	}
+	
+	public void delete(String licenseNumber) throws ClassNotFoundException, SQLException {
+		clientTableDataGateway.delete(licenseNumber);
+		
+	}
+	
+	public List<Transaction> getVehicleRentRecordsForUsers(String licenseNumber) throws SQLException, ClassNotFoundException {
+		ResultSet rs=clientTableDataGateway.getVehicleRentRecordsForUsers(licenseNumber);
+		
+		List<Transaction> transactionlist=new ArrayList<Transaction>();
+		while(rs.next()) {
+			Transaction transaction=new Transaction();
+			transaction.setClientId(rs.getInt("clientId"));
+			transaction.setVehicleId(rs.getInt("vehicleId"));
+			transaction.setReservationId(rs.getInt("reservationId"));
+			transaction.setStartdate(rs.getString("startdate"));
+			transaction.setDuedate(rs.getString("duedate"));
+			transaction.setLicenseNumber(rs.getString("licenseNumber"));
+			transaction.setLicensePlate(rs.getString("licensePlate"));
+			transaction.setStatus(rs.getString("status"));
+			transaction.setCost(rs.getInt("cost"));	
+			transactionlist.add(transaction);
+		}
+		return transactionlist;
+	}
+	
+
 
 	
 	

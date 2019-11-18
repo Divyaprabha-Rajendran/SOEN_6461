@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.mapper.ClientManagementMapper;
 import com.concordia.soen.sdm.pojo.Client;
+import com.concordia.soen.sdm.pojo.Transaction;
 
 @Controller
 @RequestMapping("/client/*")
@@ -172,11 +173,20 @@ public class ClientManagementController {
 	public ModelAndView deleteClient(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		String licenseNumber = request.getParameter("licenseNumber");
-		System.out.println("came"+licenseNumber);
 		String message = "";
 		if(licenseNumber != null) {
 			try {
-				clientDAO.deleteClient(licenseNumber);
+				List<Transaction> transactionlist = clientManagementMapper.getVehicleRentRecordsForUsers(licenseNumber);
+				if(transactionlist.size()>0)
+				{
+					message = "Cannot delete";
+					view.setViewName("view_client_detail");
+					view.addObject("message", message);
+				}
+				else
+				{
+					clientManagementMapper.delete(licenseNumber);
+				}
 				view.setViewName("redirect:/client/dashboard");
 			}catch (Exception e) {
 				message = "Problem while deleting. Please try again";
