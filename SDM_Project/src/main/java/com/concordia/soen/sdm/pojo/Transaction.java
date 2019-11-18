@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**
- * 
+ * @author Divyaprabha Rajendran
  * Model class for Transaction representing reservation
  *
  */
@@ -17,6 +17,26 @@ public class Transaction {
 	private String licensePlate;
 	private String status;
 	private int cost;
+	private int vehicleId;
+	private int clientId;
+	
+	
+	public int getVehicleId() {
+		return vehicleId;
+	}
+
+	public void setVehicleId(int vehicleId) {
+		this.vehicleId = vehicleId;
+	}
+
+	public int getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+
 	/**
 	 * getter for reservationId
 	 * @return reservationId
