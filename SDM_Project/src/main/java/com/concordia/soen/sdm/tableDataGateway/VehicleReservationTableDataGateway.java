@@ -8,6 +8,14 @@ import java.sql.Statement;
 import com.concordia.soen.sdm.pojo.Transaction;
 
 public class VehicleReservationTableDataGateway {
+	
+	/**
+	 * Method to select multiple records in the table given a parameter.
+	 * @param String parameter licensePlate to be selected.
+	 * @return ResultSet Containing all the required data.
+	 *
+	 */
+
 
 	public ResultSet selectVehicle(String parameter) throws ClassNotFoundException, SQLException {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -20,7 +28,12 @@ public class VehicleReservationTableDataGateway {
 		return rs; 
 	}
 
-	
+	/**
+	 * Method to select multiple records in the table.
+	 * @return ResultSet Containing all the required data.
+	 *
+	 */
+
 
 	public ResultSet getAllClientDetails() throws ClassNotFoundException, SQLException {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -33,6 +46,12 @@ public class VehicleReservationTableDataGateway {
 		return rs; 
 	}
 
+	/**
+	 * Method to select multiple records in the table given the parameter,
+	 * @param String parameter licenseNumber to be selected.
+	 * @return ResultSet Containing all the required data.
+	 *
+	 */
 
 
 	public ResultSet select(String parameter) throws ClassNotFoundException, SQLException {
@@ -48,6 +67,12 @@ public class VehicleReservationTableDataGateway {
 		return rs;
 	}
 
+	/**
+	 * Method to updateAvailability for a given vehicle.
+	 * @param String availability availibility of the vehicle
+	 * @param String licensePlate licenseplate to be updated.
+	 *
+	 */
 
 
 	public void updateAvailability(String availability, String licensePlate) throws SQLException, ClassNotFoundException {
@@ -67,6 +92,11 @@ public class VehicleReservationTableDataGateway {
 	}
 
 
+	/**
+	 * Method to insert data into the table.
+	 * @param transaction to be inserted.
+	 *
+	 */
 
 	public boolean insertData(Transaction transaction) throws SQLException, ClassNotFoundException {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -97,6 +127,12 @@ public class VehicleReservationTableDataGateway {
 		
 	}
 
+	/**
+	 * Method to select multiple records in the table given the licensePlate.
+	 * @param String numberPlate licensePlate of the vehicle.
+	 * @return ResultSet Containing all the required data.
+	 *
+	 */
 
 
 	public ResultSet getVehicleRentRecords(String numberPlate) throws ClassNotFoundException, SQLException {

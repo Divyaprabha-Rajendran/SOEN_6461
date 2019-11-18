@@ -7,8 +7,22 @@
 
 	import com.concordia.soen.sdm.pojo.CatalogDetails;
 
+	/**
+	 * 
+	 * Table data gateway class for VehicleRecordManagement.
+	 *
+	 */
+
+	
 	public class VehicleRecordTableDataGateway {
 
+		/**
+		 * Method to insert data into the table.
+		 * @param CatalogDetails to be inserted.
+		 *
+		 */
+
+		
 		public void insert(CatalogDetails newVehicle) throws SQLException, ClassNotFoundException {
 			JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
 			Connection connection=jdbc.getConnection(); 
@@ -25,6 +39,13 @@
 			
 			
 		}
+		
+		/**
+		 * Method to select multiple records in the table.
+		 * @return ResultSet Containing all the required data.
+		 *
+		 */
+
 
 			public ResultSet selectMultipleRows() throws ClassNotFoundException, SQLException {
 				JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -36,6 +57,13 @@
 				 System.out.println("Select multiple vehicles:Finish"); 
 				return rs; 
 		}
+			
+			/**
+			 * Method to select multiple records in the table given the licensePlate.
+			 * @return ResultSet Containing all the required data.
+			 *
+			 */
+
 
 			public ResultSet selectVehicle(String licensePlate) throws SQLException, ClassNotFoundException {
 				JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -49,6 +77,13 @@
 			    
 				return rs; 
 			}
+			
+			/**
+			 * Method to select multiple records in the table.
+			 * @return boolean successful or failure message.
+			 *
+			 */
+
 			
 			public boolean updateVehicle(CatalogDetails vehicle, int version) throws ClassNotFoundException, SQLException {
 				JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
@@ -80,6 +115,11 @@
 			 }
 			}
 
+			/**
+			 * Method to select delete record in the table.
+			 *
+			 */
+
 
 			public void delete(String licensePlate) throws ClassNotFoundException, SQLException {
 				// TODO Auto-generated method stub
@@ -95,6 +135,13 @@
 				int[] result=statement.executeBatch();
 				  
 			}
+			
+			/**
+			 * Method to delete record in the table.
+			 * @return ResultSet Containing all the required data.
+			 *
+			 */
+
 			
 			public ResultSet getVehicleRentRecordsForVehicle(String licensePlate) throws ClassNotFoundException, SQLException {
 				JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();

@@ -8,7 +8,7 @@ import java.sql.Statement;
 import com.concordia.soen.sdm.pojo.UserLogin;
 /**
  * 
- * TDG class for tabledata gateway
+ * Table Data Gateway class for login management.
  *
  */
 public class LoginTableDataGateway {
