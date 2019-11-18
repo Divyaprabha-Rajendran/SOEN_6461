@@ -23,13 +23,6 @@ import com.concordia.soen.sdm.tableDataGateway.VehicleRecordTableDataGateway;
  *
  */
 
-/**
- * 
- *
- *
- */
-
-
 public class VehicleRecordMapper {
 
 	
