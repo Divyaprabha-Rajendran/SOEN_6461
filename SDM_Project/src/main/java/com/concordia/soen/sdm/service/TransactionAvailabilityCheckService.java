@@ -23,7 +23,7 @@ public class TransactionAvailabilityCheckService {
 		
 			
 		String dateFormat="yyyy/MM/dd";
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		sdf.setLenient(false);
 		for(Transaction transaction :transactionDetailList) {
 			

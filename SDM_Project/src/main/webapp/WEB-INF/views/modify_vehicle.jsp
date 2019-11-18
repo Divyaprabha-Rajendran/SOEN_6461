@@ -9,10 +9,8 @@
 <title>Modify Vehicle</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-<%@ include file="header.jsp" %>  
->>>>>>> branch 'master' of https://github.com/Divyaprabha-Rajendran/SOEN_6461.git
+
+<%@ include file="header.jsp" %> 
 	<form action="${contextPath}/vehicle/updateVehicleDetails" method="post">
 		<table width="800" border="1">
 			<tr>

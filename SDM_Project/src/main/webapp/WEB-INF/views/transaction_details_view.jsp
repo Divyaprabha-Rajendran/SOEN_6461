@@ -54,7 +54,7 @@
 				<td> 
 				<p>Enter Date:<p>
 				</td>
-				<td><input type="date" name="Date" id="Date" required="required"  disabled></td>
+				<td><input type="datetime-local" name="Date" id="Date" required="required"  disabled></td>
 			</tr>
 			<tr>
 			<td><input type="submit"  id="mySubmit" disabled>

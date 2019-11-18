@@ -109,18 +109,7 @@ public class ClientTableDataGateway {
 		
 	}
 
-	public void delete(String licenseNumber) throws ClassNotFoundException, SQLException {
-		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
-		Connection connection=jdbc.getConnection(); 
-		Statement statement = connection.createStatement();
-		String deleteTransactionQuery= "DELETE FROM VehicleRentingSystem.rentedVehiclesRecord  WHERE licenseNumber='"+licenseNumber+"'";
-		String deleteQuery = "DELETE FROM VehicleRentingSystem.clientInformation  WHERE licenseNumber='"+licenseNumber+"'";
-		statement.addBatch("SET FOREIGN_KEY_CHECKS = 0");   
-		statement.addBatch(deleteQuery);
-		statement.addBatch(deleteTransactionQuery);
-		statement.addBatch("SET FOREIGN_KEY_CHECKS = 1");
-		int[] result=statement.executeBatch();
-	}
+
 	
 	
 }

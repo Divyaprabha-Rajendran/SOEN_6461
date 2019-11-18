@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**
- * @author Divyaprabha Rajendran
+ * 
  * Model class for Transaction representing reservation
  *
  */
