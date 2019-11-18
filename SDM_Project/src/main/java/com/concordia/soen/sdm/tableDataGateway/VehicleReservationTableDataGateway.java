@@ -61,7 +61,7 @@ public class VehicleReservationTableDataGateway {
 		System.out.println("update Statement:Start");
 		statement.executeBatch();
 		 System.out.println("update Statement:Stop"); 
-		connection.close();  
+		  
 	
 		
 	}
@@ -73,7 +73,7 @@ public class VehicleReservationTableDataGateway {
 		Connection connection=jdbc.getConnection(); 
 		Statement statement = connection.createStatement();
 	
-		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where vehicleId='"+transaction.getVehicleId()+"'AND startdate='"+transaction.getStartdate()+"'";
+		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where vehicleId='"+transaction.getVehicleId()+"' and NOT status='cancelled' and NOT status='returned' AND (startdate='"+transaction.getStartdate()+"' OR startdate='"+transaction.getDuedate()+"')";
 	ResultSet check=statement.executeQuery(selectQuery);
 	if (!check.next()) {
 		String insertQuery = "INSERT INTO VehicleRentingSystem.rentedVehiclesRecord(vehicleId,clientId,startdate,duedate,licenseNumber,licensePlate, status, cost) VALUES ('"
@@ -88,7 +88,7 @@ public class VehicleReservationTableDataGateway {
 		    System.out.println("Insert Statement:Start"); 
 			int rs = statement.executeUpdate(insertQuery);
 		    System.out.println("Insert Statement:Finish"); 
-		    connection.close();
+		    
 		    return true;
 	}else {
 		return false;
@@ -104,7 +104,7 @@ public class VehicleReservationTableDataGateway {
 		Connection connection=jdbc.getConnection(); 
 		Statement statement = connection.createStatement();
 		
-		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where licensePlate='"+numberPlate+"' and (NOT status='cancelled' or NOT status='returned') ";
+		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where licensePlate='"+numberPlate+"' and (NOT status='cancelled' and NOT status='returned') ";
 	ResultSet rs=statement.executeQuery(selectQuery);
 	return rs;
 	}

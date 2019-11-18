@@ -57,7 +57,7 @@ public class CancelReturnTableDataGateway {
 		System.out.println("update Statement:Start");
 		statement.executeBatch();
 		 System.out.println("update Statement:Stop"); 
-		connection.close();  
+		
 	
 	}
 
@@ -82,7 +82,7 @@ public class CancelReturnTableDataGateway {
 		System.out.println("update Statement:Start");
 		statement.executeBatch();
 		 System.out.println("update Statement:Stop"); 
-		connection.close();  
+		
 		
 	}
 

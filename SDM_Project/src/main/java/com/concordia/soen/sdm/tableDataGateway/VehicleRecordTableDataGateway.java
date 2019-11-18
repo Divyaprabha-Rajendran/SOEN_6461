@@ -22,7 +22,7 @@
 			statement.addBatch("SET FOREIGN_KEY_CHECKS = 1");
 			statement.executeBatch();
 			System.out.println("insert   Vehicles:Stop");
-			connection.close();  
+			
 			
 		}
 
@@ -93,7 +93,7 @@
 				statement.addBatch(deleteTransactionQuery);
 				statement.addBatch("SET FOREIGN_KEY_CHECKS = 1");
 				int[] result=statement.executeBatch();
-				 connection.close();  
+				  
 			}
 			
 			public ResultSet getVehicleRentRecordsForVehicle(String licensePlate) throws ClassNotFoundException, SQLException {

@@ -97,7 +97,7 @@ public class ClientTableDataGateway {
 		statement.addBatch(updateQuery);
 		statement.addBatch("SET FOREIGN_KEY_CHECKS = 1");
 		int[] result=statement.executeBatch(); 
-		 connection.close();  
+		 
 			
 		 if(result[1]<=0) {
 			 return false;
@@ -120,7 +120,7 @@ public class ClientTableDataGateway {
 		statement.addBatch(deleteTransactionQuery);
 		statement.addBatch("SET FOREIGN_KEY_CHECKS = 1");
 		int[] result=statement.executeBatch();
-		 connection.close();  
+		
 		
 	}
 	

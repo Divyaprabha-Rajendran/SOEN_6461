@@ -45,7 +45,7 @@ public class TransactionHistoryTableDataGateway {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
 		Connection connection=jdbc.getConnection(); 
 		Statement statement = connection.createStatement();
-		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licensePlate='"+searchData+"'";
+		String sql = "SELECT * FROM VehicleRentingSystem.rentedVehiclesRecord WHERE licensePlate='"+searchData+"' and (NOT status='cancelled' and NOT status='returned') ";
 		ResultSet rs = statement.executeQuery(sql);
 		return rs; 
 	}
