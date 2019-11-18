@@ -13,8 +13,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.concordia.soen.sdm.controller.ClientManagementController;
 import com.concordia.soen.sdm.controller.TransactionController;
-import com.concordia.soen.sdm.dao.ClientDAO;
-import com.concordia.soen.sdm.dao.TransactionDAO;
 import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -32,9 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.concordia.soen.sdm.pojo.Transaction;
 public class TestClient {
  
-	@Mock
-	
-	private ClientDAO clientDAO;
+
 
     @InjectMocks
     private ClientManagementController clientManagementController;

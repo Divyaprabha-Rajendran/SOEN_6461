@@ -14,11 +14,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.concordia.soen.sdm.dao.CatalogDAO;
-import com.concordia.soen.sdm.dao.ClientDAO;
-import com.concordia.soen.sdm.dao.TransactionDAO;
-import com.concordia.soen.sdm.dao.VehicleDao;
 import com.concordia.soen.sdm.mapper.ClientManagementMapper;
 import com.concordia.soen.sdm.mapper.VehicleRecordMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
@@ -35,10 +30,7 @@ import com.concordia.soen.sdm.pojo.VehicleDetails;
  */
 public class VehicleRecordController 
 {
-	@Autowired
-	CatalogDAO catalogDao;
-	@Autowired
-	VehicleDao vehicleDao;
+
 	@Autowired
 	VehicleRecordMapper vehicleRecordMapper;
 	@Autowired

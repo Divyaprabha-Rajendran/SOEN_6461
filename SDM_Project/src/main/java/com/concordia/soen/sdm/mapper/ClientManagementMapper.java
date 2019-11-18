@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-
-import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
 import com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway;

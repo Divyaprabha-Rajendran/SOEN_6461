@@ -24,13 +24,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.concordia.soen.sdm.controller.ClientManagementController;
 
-import com.concordia.soen.sdm.dao.CatalogDAO;
-
-import com.concordia.soen.sdm.dao.ClientDAO;
-
-import com.concordia.soen.sdm.dao.TransactionDAO;
-
-
 
 import java.lang.reflect.Method;
 
@@ -60,9 +53,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Test;
 public class TestClientManagementController {
-	@Mock
-
-	ClientDAO clientDao;
+	
 
 	
 

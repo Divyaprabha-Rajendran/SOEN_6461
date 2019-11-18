@@ -15,8 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.mapper.AdminCatalogMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 /** 
@@ -28,8 +26,7 @@ import com.concordia.soen.sdm.pojo.CatalogDetails;
 @Controller
 @RequestMapping("/admin/")
 public class AdminCatalogController {
-	@Autowired
-	CatalogDAO catalogDao;
+	
 	
 	@Autowired
 	AdminCatalogMapper adminCatalogMapper;

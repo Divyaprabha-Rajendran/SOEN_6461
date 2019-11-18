@@ -3,12 +3,8 @@
     <context:component-scan base-package="com.concordia.soen.sdm.controller"/>
     <context:annotation-config />
   
-    <bean id="userLoginDao" class="com.concordia.soen.sdm.dao.UserLoginDAO" />
-    <bean id="catalogDao" class="com.concordia.soen.sdm.dao.CatalogDAO" />
-    <bean id="clientDao" class="com.concordia.soen.sdm.dao.ClientDAO" />
-    <bean id="transactionDao" class="com.concordia.soen.sdm.dao.TransactionDAO" />
+
     <bean id="transactionAvailabilityCheck" class="com.concordia.soen.sdm.service.TransactionAvailabilityCheckService" />
-    <bean id="vehicleDao" class="com.concordia.soen.sdm.dao.VehicleDao" />
     <bean id="clientManagementMapper" class="com.concordia.soen.sdm.mapper.ClientManagementMapper"/>
     <bean id="clientTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.ClientTableDataGateway"/>
     <bean id="TransactionHistoryMapper" class="com.concordia.soen.sdm.mapper.TransactionHistoryMapper"/>
@@ -24,6 +20,9 @@
     
     <bean id="vehicleReservationMapper" class="com.concordia.soen.sdm.mapper.VehicleReservationMapper"/>
     <bean id="vehicleReservationTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.VehicleReservationTableDataGateway"/>
+    <bean id="loginMapper" class="com.concordia.soen.sdm.mapper.LoginMapper"/>
+    <bean id="loginTableDataGateway" class="com.concordia.soen.sdm.tableDataGateway.LoginTableDataGateway"/>
+  
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.concordia.soen.sdm.dao.ClientDAO;
 import com.concordia.soen.sdm.mapper.ClientManagementMapper;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
@@ -29,8 +28,7 @@ import com.concordia.soen.sdm.pojo.Transaction;
  */
 public class ClientManagementController {
 
-	@Autowired
-	ClientDAO clientDAO;
+	
 
 	@Autowired
 	ClientManagementMapper clientManagementMapper;

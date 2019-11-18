@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.concordia.soen.sdm.controller.TransactionController;
-import com.concordia.soen.sdm.dao.TransactionDAO;
 import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -29,8 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.concordia.soen.sdm.pojo.Transaction;
 public class TestTransactionController {
  
-	@Mock
-    private TransactionDAO transactionDao;
+	
 	@Mock
     private TransactionAvailabilityCheckService  transactionAvailabilityCheck;
 	
@@ -68,34 +66,7 @@ public class TestTransactionController {
     	            .andExpect(model().hasNoErrors());
     	            
     }
-//    @Test
-//    public void testNegativeSearchTransactionHistory() throws Exception {
-//    String nullCheck=null;
-//      List<Transaction> ob=new ArrayList<Transaction>();
-//    	 this.mockMvc.perform(get("/transaction/transactionFiltering"))
-//    	            .andExpect(status().isOk())
-//    	            .andExpect(view().name("transaction_details_view"))
-//    	            .andExpect(model().attribute("transactionDetails",nullCheck));
-//    	            
-//    }
-    
-	/*
-	 * @Test public void testDateSearchTransactionHistory() throws Exception {
-	 * 
-	 * List<Transaction> ob=new ArrayList<Transaction>();
-	 * this.mockMvc.perform(get("/transaction/transactionFiltering").param(
-	 * "criteriaOption", "vehicleId") .param("searchData", "AAA 000")
-	 * .param("vehicleDate", "checked") .param("Date", "28/11/2019"))
-	 * .andExpect(status().isOk())
-	 * .andExpect(view().name("transaction_details_view"))
-	 * .andExpect(model().attributeExists("transactionDetails"))
-	 * .andExpect(model().hasNoErrors())
-	 * .andExpect(flash().attribute("AvailableMsg",
-	 * "Vehicle with licenseplate  is available."));
-	 * 
-	 * 
-	 * }
-	 */
+
     
     
 

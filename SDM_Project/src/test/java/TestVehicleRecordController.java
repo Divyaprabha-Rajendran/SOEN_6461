@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.concordia.soen.sdm.controller.VehicleRecordController;
-import com.concordia.soen.sdm.dao.CatalogDAO;
 import java.lang.reflect.Method;
 import javax.servlet.ServletContext;
 import org.springframework.http.HttpMethod;
@@ -32,8 +31,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class TestVehicleRecordController {
 
-	@Mock
-	CatalogDAO catalogDao;
 	
     @InjectMocks
     private VehicleRecordController vehicleRecordController;

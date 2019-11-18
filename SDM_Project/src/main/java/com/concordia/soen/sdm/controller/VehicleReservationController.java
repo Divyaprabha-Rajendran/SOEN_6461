@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.concordia.soen.sdm.dao.CatalogDAO;
-import com.concordia.soen.sdm.dao.ClientDAO;
-import com.concordia.soen.sdm.dao.TransactionDAO;
 import com.concordia.soen.sdm.mapper.ClientManagementMapper;
 import com.concordia.soen.sdm.mapper.VehicleReservationMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
@@ -39,9 +35,7 @@ public class VehicleReservationController {
 	@Autowired
 	private HttpSession httpSession;
 	
-	
-	@Autowired
-	TransactionDAO transactionDao;
+
 	
 	@Autowired
 	VehicleReservationMapper vehicleReservationMapper;
@@ -177,9 +171,12 @@ public class VehicleReservationController {
 	 */
 	private String findStatus(String startDate) throws ParseException {
 		Date date = new Date();
+		System.out.println(date);
+		System.out.println(startDate);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date std = format.parse(startDate);
-		if (std.compareTo(date) == 0) {
+String SystemStd=		format.format(date);
+		if (std.compareTo(format.parse(SystemStd)) == 0) {
 			return "rented";
 		}else {
 			return "reserved";

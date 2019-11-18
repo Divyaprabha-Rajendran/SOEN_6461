@@ -15,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.concordia.soen.sdm.dao.CatalogDAO;
-import com.concordia.soen.sdm.dao.TransactionDAO;
 import com.concordia.soen.sdm.mapper.TransactionHistoryMapper;
 import com.concordia.soen.sdm.pojo.Client;
 import com.concordia.soen.sdm.pojo.Transaction;
@@ -33,8 +30,7 @@ import com.concordia.soen.sdm.service.TransactionAvailabilityCheckService;
  */
 public class TransactionController {
 	
-	@Autowired
-	TransactionDAO transactionDao;
+
 	
 	@Autowired
 	TransactionAvailabilityCheckService  transactionAvailabilityCheck;

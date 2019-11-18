@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.concordia.soen.sdm.dao.CatalogDAO;
 import com.concordia.soen.sdm.mapper.ClerkCatalogMapper;
 import com.concordia.soen.sdm.pojo.CatalogDetails;
 /** 
@@ -29,8 +27,6 @@ import com.concordia.soen.sdm.pojo.CatalogDetails;
 @RequestMapping("/system/")
 public class CatalogController {
 
-	@Autowired
-	CatalogDAO catalogDao;
 	@Autowired
 	ClerkCatalogMapper clerkCatalogMapper;
 	@Autowired

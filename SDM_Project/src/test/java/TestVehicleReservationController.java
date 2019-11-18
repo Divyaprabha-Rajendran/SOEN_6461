@@ -26,11 +26,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.concordia.soen.sdm.controller.VehicleReservationController;
 
-import com.concordia.soen.sdm.dao.CatalogDAO;
-
-import com.concordia.soen.sdm.dao.ClientDAO;
-
-import com.concordia.soen.sdm.dao.TransactionDAO;
 
 
 
@@ -62,22 +57,10 @@ public class TestVehicleReservationController {
 
 
 
-	@Mock
-
-	CatalogDAO catalogDao;
-
+	
 	
 
-	@Mock
-
-	ClientDAO clientDao;
-
 	
-
-	@Mock
-
-	TransactionDAO transactionDao;
-
 	
 
     @InjectMocks

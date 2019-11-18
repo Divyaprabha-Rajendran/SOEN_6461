@@ -1,4 +1,6 @@
 package com.concordia.soen.sdm.controller;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.concordia.soen.sdm.dao.UserLoginDAO;
+import com.concordia.soen.sdm.mapper.ClientManagementMapper;
+import com.concordia.soen.sdm.mapper.LoginMapper;
 import com.concordia.soen.sdm.pojo.UserLogin;
 
 @Controller
@@ -23,9 +26,10 @@ import com.concordia.soen.sdm.pojo.UserLogin;
 public class LoginController {
 
 	@Autowired
-	UserLoginDAO  userLoginDAO;
-	@Autowired
 	private HttpSession httpSession;
+	
+	@Autowired
+	LoginMapper loginMapper;
 	/**
 	 * This method is for the clerk login. The clerk gets logged in by entering username and password
 	 * @param request
@@ -58,28 +62,34 @@ public class LoginController {
 			String Name=request.getParameter("username");  
 			String password=request.getParameter("password");
 			try {
-				UserLogin user =  userLoginDAO.userLogin(Name,password);
-				httpSession.setAttribute("userRole", user.getRole());
-				httpSession.setAttribute("userName", user.getUserName());
-				userName=user.getUserName();
-				if(user.getRole().equalsIgnoreCase("clerk")) {
-					mv.setViewName("welcome");		
+				UserLogin user=null;
+				try {
+					user = loginMapper.userLogin(Name,password);
+					httpSession.setAttribute("userRole", user.getRole());
+					httpSession.setAttribute("userName", user.getUserName());
+					userName=user.getUserName();
+					if(user.getRole().equalsIgnoreCase("clerk")) {
+						mv.setViewName("welcome");		
 
-				}else if(user.getRole().equalsIgnoreCase("admin")) {
-					mv.setViewName("welcomeAdmin");
+					}else if(user.getRole().equalsIgnoreCase("admin")) {
+						mv.setViewName("welcomeAdmin");
+					}
+					String msg = "Welcome " +userName + ".";
+					mv.addObject("message",msg);
+					System.out.println("LoginController:Stop");
+				} catch (ClassNotFoundException e) {
+					mv.setViewName("redirect:/");
+				} catch (SQLException e) {
+					mv.setViewName("redirect:/");
 				}
-				String msg = "Welcome " +userName + ".";
-				mv.addObject("message",msg);
-				System.out.println("LoginController:Stop");
+			
 			}catch (EmptyResultDataAccessException e) {
+				mv.setViewName("redirect:/");
+			}catch(Exception e) {
 				mv.setViewName("redirect:/");
 			}
 		}
-//		if(userName.length()>0) {
-//			System.out.println(userName);
-//			String msg = "Welcome " +userName + ".";
-//			mv.addObject("message",msg);
-//		}
+
 		return mv;
 	}
 	@RequestMapping(value ="/clerk/logout", method = {RequestMethod.POST, RequestMethod.GET})
