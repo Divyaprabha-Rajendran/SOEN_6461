@@ -58,13 +58,15 @@
 				numberPlate : document.getElementsByName('licensePlate')[0]['value']
 			}
 			
-			var contextPath='<%=request.getContextPath()%>';
-			
+			var contexttPath="${pageContext.request.contextPath}";
+	
 			$.ajax({
 				type : "GET",
-				url : contextPath+"/reservation/checkVehicleAvailability",
+				
+				url : contexttPath+"/reservation/checkVehicleAvailability",
 				data : dates,
 				success : function(data) {
+					
 					console.log("SUCCESS: ", data);
 					if(data == 'FALSE'){
 						document.getElementById("submit")['disabled'] = 'disabled';
@@ -72,9 +74,11 @@
 					}
 				},
 				error : function(e) {
+					
 					console.log("ERROR: ", e);
 				},
 				done : function(e) {
+					
 					console.log("DONE");
 				}
 			});

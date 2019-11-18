@@ -150,7 +150,6 @@ public class VehicleReservationController {
 			Transaction data = records.get(i);
 			Date dbStartDate = format.parse(data.getStartdate());
 			Date dbEndDate = format.parse(data.getDuedate());
-			System.out.println(data.getStartdate()+" "+sDate+" "+endDate);
 			if(dbStartDate.compareTo(sDate) < 0 && dbEndDate.compareTo(sDate) > 0) {
 				return new String("FALSE");
 			}
@@ -171,8 +170,7 @@ public class VehicleReservationController {
 	 */
 	private String findStatus(String startDate) throws ParseException {
 		Date date = new Date();
-		System.out.println(date);
-		System.out.println(startDate);
+	
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date std = format.parse(startDate);
 String SystemStd=		format.format(date);

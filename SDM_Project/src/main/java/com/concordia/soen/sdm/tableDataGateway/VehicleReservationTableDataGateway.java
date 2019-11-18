@@ -103,8 +103,8 @@ public class VehicleReservationTableDataGateway {
 		JdbcConnectionManager jdbc=JdbcConnectionManager.getjdbc();
 		Connection connection=jdbc.getConnection(); 
 		Statement statement = connection.createStatement();
-	
-		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where vehicleId='"+numberPlate+"' and NOT status='cancelled'";
+		
+		String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where licensePlate='"+numberPlate+"' and (NOT status='cancelled' or NOT status='returned') ";
 	ResultSet rs=statement.executeQuery(selectQuery);
 	return rs;
 	}

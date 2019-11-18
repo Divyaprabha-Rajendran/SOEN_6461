@@ -103,6 +103,7 @@ public class VehicleReservationMapper {
 		ResultSet rs=vehicleReservationTableDataGateway.getVehicleRentRecords(numberPlate);
 		
 		List<Transaction> transactionlist=new ArrayList<Transaction>();
+		
 		while(rs.next()) {
 			Transaction transaction=new Transaction();
 			transaction.setClientId(rs.getInt("clientId"));
@@ -116,6 +117,7 @@ public class VehicleReservationMapper {
 			transaction.setCost(rs.getInt("cost"));	
 			transactionlist.add(transaction);
 		}
+	
 		return transactionlist;
 	}
 	
