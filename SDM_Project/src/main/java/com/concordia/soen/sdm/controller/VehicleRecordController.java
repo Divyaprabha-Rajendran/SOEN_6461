@@ -68,7 +68,43 @@ public class VehicleRecordController
 		return view;
 	}
 	
-	
+	@RequestMapping(value="/modifyDeleteVehicle")
+	public ModelAndView modifyDeleteVehicle() {
+		ModelAndView view = new ModelAndView("modify_delete_vehicles");
+		List<CatalogDetails> details=null;
+		httpSession.setAttribute("vehiclerecordVersion", null);
+		try {
+			details = vehicleRecordMapper.selectAllVehicles();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		view.addObject("vehicleDetails", details);
+		return view;
+	}
+	@RequestMapping(value="/modify")
+	public ModelAndView modify(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView("modify_vehicle");
+		String licensePlate = request.getParameter("licensePlate");
+		CatalogDetails vehicleDetails = null;
+		httpSession.setAttribute("vehiclerecordVersion", null);
+		try {
+			vehicleDetails = vehicleRecordMapper.selectVehicle(licensePlate);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		httpSession.setAttribute("vehiclerecordVersion", vehicleDetails.getVersion());
+		view.addObject("vehicleDetails", vehicleDetails);
+		return view;
+		
+	}
 	
 	@RequestMapping(value="/delete")
 	public ModelAndView delete(HttpServletRequest request) {
@@ -95,6 +131,38 @@ public class VehicleRecordController
 	//	vehicleDao.deleteVehicle(licensePlate);
 		return view;
 	}
+	
+	@RequestMapping(value="/updateVehicleDetails")
+	public ModelAndView updateVehicleDetails(HttpServletRequest request)  {
+		ModelAndView view = new ModelAndView("redirect:/vehicle/modifyDeleteVehicle");
+		VehicleDetails details = new VehicleDetails();
+		String availability=(request.getParameter("availability"));
+		String color=(request.getParameter("color"));
+		int cost=(Integer.parseInt(request.getParameter("cost")));
+		String licensePlate=(request.getParameter("licensePlate"));
+		String make=(request.getParameter("make"));
+		String model=(request.getParameter("model"));
+		String type=(request.getParameter("type"));
+		int vehicleId=(Integer.parseInt(request.getParameter("vehicleId")));
+		String year=(request.getParameter("year").trim());
+		String message="";
+		int version=(int) httpSession.getAttribute("vehiclerecordVersion");
+		 try {
+		boolean vehicleUpdate=vehicleRecordMapper.updateVehicle(type,make,model,year,color,licensePlate,availability,cost,vehicleId,version);
+		if(vehicleUpdate==false) {
+			message="Update not successful.Please try again later";
+		}
+		 } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 view.addObject("message", message);
+		return view;
+	}
+
 	
 	@RequestMapping(value="/createNewVehicle")
 	public ModelAndView createNewVehicle(HttpServletRequest request) throws Exception {
