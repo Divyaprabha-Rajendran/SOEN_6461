@@ -101,7 +101,7 @@
 				Connection connection=jdbc.getConnection(); 
 				Statement statement = connection.createStatement();
 			
-				String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where vehicleId='"+licensePlate+"' and status='rented' or status='reserved'";
+				String  selectQuery="select * from VehicleRentingSystem.rentedVehiclesRecord where licensePlate='"+licensePlate+"' and (status='rented' or status='reserved')";
 			ResultSet rs=statement.executeQuery(selectQuery);
 			return rs;
 			}
